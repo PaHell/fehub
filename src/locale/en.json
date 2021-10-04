@@ -11,49 +11,25 @@
 		}
 	},
 	"index": {
-		"title": "Play a Game of Chess",
-		"computer": {
-			"heading": "Versus Computer",
-			"info": "Multithreaded Stockfish 12 Engine",
-			"first_move": {
-				"label": "First Move",
-				"random": "Random",
-				"you": "You",
-				"computer": "Computer"
-			},
-			"difficulty": {
-				"label": "Difficulty",
-				"easy": "Easy",
-				"medium": "Medium",
-				"hard": "Hard",
-				"impossible": "Impossible"
-			},
-			"start_game": "Start Game"
+		"title": "FEHub",
+		"account": {
+			"label": "Account",
+			"text": "Username",
+			"settings": "Settings",
+			"logout": "Log Out"
 		},
-		"player": {
-			"heading": "Versus Player",
-			"info": "P2P Connection via Peer.js/WebRTC",
-			"lobby_code": {
-				"label": "Lobby Code",
-				"placeholder": "xertz"
-			},
-			"nickname": {
-				"label": "Your Name",
-				"placeholder": "Michael Faraday"
-			},
-			"connect": "Connect",
-			"host": "Host own Lobby"
+		"search": {
+			"heading": "Search for People or Projects",
+			"placeholder": "PolyChat, ...",
+			"action": "Search"
 		},
-		"training": {
-			"heading": "Training",
-			"list_all": "All Puzzles",
-			"continue": "Continue Last"
-		}
-	},
-	"game": {
-		"board": {
-			"points": "Pts",
-			"level": "Lvl"
+		"favorites": {
+			"heading": "My Favorites",
+			"empty": "You haven't yet marked anything as favorite.",
+			"more": "Show All"
+		},
+		"recent": {
+			"heading": "Recently viewed"
 		}
 	}
 }

@@ -44,6 +44,9 @@
 		
 		&.align-right
 			justify-content flex-end
+
+		&.align-center
+			justify-content center
 		
 		> .icon
 			width  $FZ_Icon

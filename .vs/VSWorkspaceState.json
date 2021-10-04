@@ -1,0 +1,13 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\src",
+    "\\src\\lib",
+    "\\src\\locale",
+    "\\src\\routes",
+    "\\src\\styles",
+    "\\static"
+  ],
+  "SelectedNode": "\\src\\locale\\en.json",
+  "PreviewInSolutionExplorer": false
+}

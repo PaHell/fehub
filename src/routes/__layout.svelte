@@ -9,7 +9,7 @@
 
 <script>
 	import { onMount } from 'svelte';
-	import { blockW, blockH, blockS, spaceS, spaceM, spaceL, field, border } from '$src/store.js';
+	import { blockW, blockH, blockS, spaceS, spaceM, spaceL, elemS, border } from '$src/store.js';
 
 	let ref;
 	onMount(() => {
@@ -26,7 +26,7 @@
 		blockW.set(parseInt(width));
 		blockH.set(parseInt(height));
 		blockS.set(parseInt(paddingTop));
-		field.set(parseInt(paddingBottom));
+		elemS.set(parseInt(paddingBottom));
 		spaceS.set(parseInt(marginTop));
 		spaceM.set(parseInt(marginRight));
 		spaceL.set(parseInt(marginBottom));
@@ -54,7 +54,7 @@
 		width $SizeBlock
 		height $SizeBlock
 		padding-top $SizeBlockSmall
-		padding-bottom $SizeField
+		padding-bottom $SizeElemS
 		margin $SpacingSmall $Spacing $SpacingLarge $WidthBorder
 
 </style>

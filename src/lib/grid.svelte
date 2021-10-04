@@ -2,15 +2,19 @@
 	// cursor
 	import Cursor from '$lib/grid/cursor.svelte';
 	// components
+	import dropdown from '$lib/grid/dropdown.svelte';
+	import list from '$lib/grid/list.svelte';
 	import button from '$lib/grid/button.svelte';
-	import board from '$lib/grid/board.svelte';
 	import checkbox from '$lib/grid/checkbox.svelte';
 	import input from '$lib/grid/input.svelte';
 	import select from '$lib/grid/select.svelte';
 	import text from '$lib/grid/text.svelte';
 	const elementTypes = {
-		board: {
-			component: board
+		list: {
+			component: list
+		},
+		dropdown: {
+			component: dropdown
 		},
 		button: {
 			component: button
@@ -252,7 +256,9 @@
 			39: 'right',
 			40: 'down'
 		};
-		//console.warn(event.keyCode);
+		// remove mouse :focus from click
+		if (event.keyCode === 13) document.activeElement.blur();
+		// handle comp events
 		const compResponse = data[activeElemID].ref.handleKeydown?.(event);
 		if (!compResponse) {
 			switch (event.keyCode) {
@@ -268,6 +274,7 @@
 				// enter key
 				case 13:
 					event.preventDefault();
+					// execute onClick
 					if (!elements[data[activeElemID].name].disabled) onClick(event, activeElemID);
 					break;
 				default:
@@ -290,6 +297,7 @@
 				svelte:component(
 					this="{elementTypes[element.type].component}",
 					bind:props="{elements[element.name]}",
+					bind:specs="{data[i].css}",
 					bind:this="{element.ref}",
 					active="{activeElemID === i}",
 					on:click!="{(e) => onClick(e, i)}",

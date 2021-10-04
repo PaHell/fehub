@@ -1,5 +1,5 @@
 <script context="module">
-	import { blockW, blockH, blockS, spaceS, spaceM, spaceL, field, border } from '$src/store.js';
+	import { blockW, blockH, blockS, spaceS, spaceM, spaceL, border } from '$src/store.js';
 </script>
 
 <script>
