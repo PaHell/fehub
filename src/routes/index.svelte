@@ -94,21 +94,39 @@
 		},
 		headerRecent: {
 			type: 'text',
-			icon: 'history',
+			icon: 'history_edu',
 			text: 'index.recent.heading',
 		},
+		listRecent: {
+			type: 'list',
+			empty: {
+				icon: 'history_toggle_off',
+				text: 'index.recent.empty',
+			},
+			more: {
+				icon: 'history',
+				text: 'index.recent.more',
+				onClick: () => {
+					console.log('recent show more');
+				}
+			},
+			items: [],
+			onClick: (item, index) => {
+				console.log(item, index);
+			}
+		},
 	};
-	// 12:8 format
+	// 12:9
 	// prettier-ignore
 	let gridLayout = [
 		[ 0, 1             , 3             , 4             , 1              , 2             , 1             ],
 		[ 1, 'heading'     , 'heading'     , 'heading'     , 'language'     , 'account'     , 'account'     ],
-		[ 1, '.'           , '.'           , '.'           , '.'            , '.'           , '.'           ],
 		[ 1, '.'           , 'headerSearch', 'headerSearch', 'headerSearch' , 'headerSearch', '.'           ],
 		[ 1, '.'           , 'inputSearch' , 'inputSearch' , 'buttonSearch' , 'buttonSearch', '.'           ],
 		[ 1, 'headerFav'   , 'headerFav'   , 'headerFav'   , 'headerFav'    , 'headerFav'   , 'headerFav'   ],
 		[ 2, 'listFav'     , 'listFav'     , 'listFav'     , 'listFav'      , 'listFav'     , 'listFav'     ],
 		[ 1, 'headerRecent', 'headerRecent', 'headerRecent', 'headerRecent' , 'headerRecent', 'headerRecent'],
+		[ 2, 'listRecent'  , 'listRecent'  , 'listRecent'  , 'listRecent'   , 'listRecent'  , 'listRecent'  ],
 	];
 </script>
 

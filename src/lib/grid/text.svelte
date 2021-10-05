@@ -11,7 +11,7 @@
 	const defaults = {
 		text: false,
 		icon: false,
-		level: 'headline',
+		level: 'default',
 		align: 'left',
 		info: false
 	};
@@ -103,6 +103,14 @@
 			> .text
 				font-weight    $FW_Bold
 				color          $ColorBlackTextSec
+						
+		&.level-default
+			> .icon
+				margin    0 $SpacingSmall 0 0 !important
+				font-size $FZ_IconSmall
+				color     $ColorIconSec
+			> .text
+				color $ColorBlackTextSec
 		
 		&.level-caption
 			> .icon

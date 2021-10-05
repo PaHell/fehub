@@ -5,6 +5,7 @@
 		"sw": "Schwäbisch"
 	},
 	"general": {
+		"app": "FEHub",
 		"language": "Language",
 		"select": {
 			"none": "None"
@@ -29,7 +30,29 @@
 			"more": "Show All"
 		},
 		"recent": {
-			"heading": "Recently viewed"
+			"heading": "Recently viewed",
+			"empty": "Go, take a look at some awesome projects!",
+			"more": "Full History"
+		}
+	},
+	"auth": {
+		"username": {
+			"label": "Username",
+			"placeholder": "robert.bosch"
+		},
+		"password": {
+			"label": "Password",
+			"placeholder": "$12345678"
+		},
+		"login": {
+			"heading": "Please login to continue",
+			"action": "Log In",
+			"text": "Already registered?"
+		},
+		"register": {
+			"heading": "Create a new Account",
+			"action": "Sign Up",
+			"text": "New here?"
 		}
 	}
 }

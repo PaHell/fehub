@@ -25,6 +25,10 @@
 		updateCursor();
 	}
 
+	export function onLeave() {
+		hovered = 0;
+	}
+
 	export function handleKeydown(event) {
 		let parentStop = false;
 		switch (event.keyCode) {
@@ -72,13 +76,15 @@
 			.items
 				+each('props.items as item, index')
 					button(
-						class:hovered="{hovered - 1 === index}",
+						class:hovered="{hovered === index}",
 						on:click|preventDefault!="{() => onChildClick(index)}")
 						.img
 							img(src="{item.img}")
 						p.text.bold {item.name}
 						p.text.caption {item.owner}
-				button(on:click|preventDefault!="{() => onShowMore()}")
+				button(
+					class:hovered="{hovered === props.items.length}",
+					on:click|preventDefault!="{() => onShowMore()}")
 					Icon {props.more.icon}
 					p.text.bold {$_(props.more.text)}
 			+else()
@@ -108,6 +114,7 @@
 				background-color $ColorBG
 				box-shadow       $Shadow
 				border-radius    $Radius
+				transition       background-color $TimeTrans, box-shadow $TimeTrans
 
 				&:not(:last-child)
 					margin-right $SpacingLarge
@@ -128,6 +135,10 @@
 
 				> .text:not(:last-child)
 					margin-bottom $SpacingText
+
+		&.active > .items > button.hovered
+			background-color $ColorBGLight
+			box-shadow       $ShadowRaised
 
 		> .empty
 			display         flex
