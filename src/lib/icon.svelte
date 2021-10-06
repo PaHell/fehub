@@ -10,7 +10,7 @@
 	i.icon
 		display     block
 		text-align  center
-		line-height $SizeBlock
-		color       $ColorIconSec
-		transition  color $TimeTrans
+		line-height var(--SizeBlock)
+		color       var(--ColorIconSec)
+		transition  color var(--TimeTrans)
 </style>

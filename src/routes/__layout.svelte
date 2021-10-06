@@ -1,10 +1,13 @@
 <script context="module">
-	// lang
 	import { init as initI18n } from '$lib/../i18n';
-	initI18n();
+	import { waitLocale } from 'svelte-i18n';
 
-	/* import { waitLocale } from 'svelte-i18n';
-	waitLocale(); */
+	export async function load() {
+		// lang
+		initI18n();
+		waitLocale();
+		return {};
+	}
 </script>
 
 <script>
@@ -13,6 +16,7 @@
 
 	let ref;
 	onMount(() => {
+		// css var
 		const {
 			width,
 			height,
@@ -51,10 +55,10 @@
 		justify-content center
 	
 	#ref
-		width $SizeBlock
-		height $SizeBlock
-		padding-top $SizeBlockSmall
-		padding-bottom $SizeElemS
-		margin $SpacingSmall $Spacing $SpacingLarge $WidthBorder
+		width var(--SizeBlock)
+		height var(--SizeBlock)
+		padding-top var(--SizeBlockSmall)
+		padding-bottom var(--SizeElemS)
+		margin var(--SpacingSmall) var(--Spacing) var(--SpacingLarge) var(--WidthBorder)
 
 </style>

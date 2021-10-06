@@ -1,156 +1,202 @@
-// VARIABLES
-// Colors: Greys
-$Grey000 = #FFFFFF
-$Grey050 = #FAFAFA
-$Grey100 = #F5F5F5
-$Grey200 = #EEEEEE
-$Grey250 = #E7E7E7
-$Grey300 = #E0E0E0
-$Grey400 = #BDBDBD
-$Grey500 = #9E9E9E
-$Grey600 = #757575
-$Grey700 = #616161
-$Grey800 = #424242
-$Grey850 = #303030
-$Grey900 = #212121
-$Grey950 = #000000
-// Colors: Palette
-$Red        = (#ff867c #ef5350 #b61827)
-$Pink       = (#ff77a9 #ec407a #b4004e)
-$Purple     = (#df78ef #ab47bc #790e8b)
-$DeepPurple = (#b085f5 #7e57c2 #4d2c91)
-$Indigo     = (#8e99f3 #5c6bc0 #26418f)
-$Blue       = (#80d6ff #42a5f5 #0077c2)
-$LightBlue  = (#73e8ff #29b6f6 #0086c3)
-$Cyan       = (#6ff9ff #26c6da #0095a8)
-$Teal       = (#64d8cb #26a69a #00766c)
-$Green      = (#98ee99 #66bb6a #338a3e)
-$LightGreen = (#cfff95 #9ccc65 #6b9b37)
-$Lime       = (#ffff89 #d3e057 #9fae22)
-$Yellow     = (#ffff8b #ffee58 #c9bc1f)
-$Amber      = (#fffd61 #ffca28 #c79a00)
-$Orange     = (#ffd95b #ffa726 #c77800)
-$DeepOrange = (#ffa270 #ff7043 #c63f17)
-$Brown      = (#be9c91 #8d6e63 #5f4339)
-$BlueGrey   = (#a7c0cd #78909c #4b636e)
-// Colors: Status
-$ColorError   = $Red[1]
-$ColorSuccess = $Blue[1]
-$ColorWarning = $Orange[1]
-// Text/Icons: Opacity
-$OpacityBlackPri = .9
-$OpacityBlackSec = .5
-$OpacityBlackTri = .35
-$OpacityWhitePri = 1
-$OpacityWhiteSec = .7
-$OpacityWhiteTri = .5
-// Colors: Text
-$ColorBlackTextPri = $Grey900
-$ColorBlackTextSec = $Grey700
-$ColorBlackTextTri = $Grey500
-$ColorWhiteTextPri = rgba($Grey000, $OpacityWhitePri)
-$ColorWhiteTextSec = rgba($Grey000, $OpacityWhiteSec)
-$ColorWhiteTextTri = rgba($Grey000, $OpacityWhiteTri)
-// Colors: Icons
-$ColorIconPri = $Grey600
-$ColorIconSec = $Grey500
-$ColorIconTri = $Grey400
-$ColorIconOnAccent = $ColorWhiteTextPri
+body
+    // COLORS
+    // Colors: Greys
+    --Grey000 #FFFFFF
+    --Grey050 #FAFAFA
+    --Grey100 #F5F5F5
+    --Grey200 #EEEEEE
+    --Grey250 #E7E7E7
+    --Grey300 #E0E0E0
+    --Grey400 #BDBDBD
+    --Grey500 #9E9E9E
+    --Grey600 #757575
+    --Grey700 #616161
+    --Grey800 #424242
+    --Grey850 #303030
+    --Grey900 #212121
+    --Grey950 #000000
+    // Colors: Palette
+    --Red-Light         #ff867c
+    --Red-Medium        #ef5350
+    --Red-Dark          #b61827
+    --Pink-Light        #ff77a9
+    --Pink-Medium       #ec407a
+    --Pink-Dark         #b4004e
+    --Purple-Light      #df78ef
+    --Purple-Medium     #ab47bc
+    --Purple-Dark       #790e8b
+    --DeepPurple-Light  #b085f5
+    --DeepPurple-Medium #7e57c2
+    --DeepPurple-Dark   #4d2c91
+    --Indigo-Light      #8e99f3
+    --Indigo-Medium     #5c6bc0
+    --Indigo-Dark       #26418f
+    --Blue-Light        #80d6ff
+    --Blue-Medium       #42a5f5
+    --Blue-Dark         #0077c2
+    --LightBlue-Light   #73e8ff
+    --LightBlue-Medium  #29b6f6
+    --LightBlue-Dark    #0086c3
+    --Cyan-Light        #6ff9ff
+    --Cyan-Medium       #26c6da
+    --Cyan-Dark         #0095a8
+    --Teal-Light        #64d8cb
+    --Teal-Medium       #26a69a
+    --Teal-Dark         #00766c
+    --Green-Light       #98ee99
+    --Green-Medium      #66bb6a
+    --Green-Dark        #338a3e
+    --LightGreen-Light  #cfff95
+    --LightGreen-Medium #9ccc65
+    --LightGreen-Dark   #6b9b37
+    --Lime-Light        #ffff89
+    --Lime-Medium       #d3e057
+    --Lime-Dark         #9fae22
+    --Yellow-Light      #ffff8b
+    --Yellow-Medium     #ffee58
+    --Yellow-Dark       #c9bc1f
+    --Amber-Light       #fffd61
+    --Amber-Medium      #ffca28
+    --Amber-Dark        #c79a00
+    --Orange-Light      #ffd95b
+    --Orange-Medium     #ffa726
+    --Orange-Dark       #c77800
+    --DeepOrange-Light  #ffa270
+    --DeepOrange-Medium #ff7043
+    --DeepOrange-Dark   #c63f17
+    --Brown-Light       #be9c91
+    --Brown-Medium      #8d6e63
+    --Brown-Dark        #5f4339
+    --BlueGrey-Light    #a7c0cd
+    --BlueGrey-Medium   #78909c
+    --BlueGrey-Dark     #4b636e
+    // Colors: Status
+    --ColorError   var(--Red-Medium)
+    --ColorSuccess var(--Blue-Medium)
+    --ColorWarning var(--Orange-Medium)
+    // Text/Icons: Opacity
+    --OpacityPri .9
+    --OpacitySec .5
+    --OpacityTri .35
+    // Colors: Text
+    --ColorTextPri var(--Grey900)
+    --ColorTextSec var(--Grey700)
+    --ColorTextTri var(--Grey500)
+    // Colors: Icons
+    --ColorIconPri      var(--Grey600)
+    --ColorIconSec      var(--Grey500)
+    --ColorIconTri      var(--Grey400)
+    // FONTS
+    // Font Family
+    --FontFamily     'Titillium Web', sans-serif
+    --FontFamilyMono 'Overpass Mono', monospace
+    --FontFamilyIcon 'Material Icons Two Tone'
+    // Line Height Correction
+    --LHC -1px
+    // Icon Space from Image Border
+    --IconSpace 2px
+    // Font Weight
+    --FW_Light 400
+    --FW_Bold  600
+    --FW_Mono  400
+    // Font Size
+    --FZ_Text      14px
+    --FZ_Button    15px
+    --FZ_Heading   24px
+    --FZ_Headline  20px
+    --FZ_Caption   12px
+    --FZ_Display   32px
+    --FZ_IconSmall 20px
+    --FZ_Icon      24px
+    --FZ_IconLarge 32px
+    // IDENTITY
+    // Accent
+    --ColorAccent            var(--Blue-Medium)
+    --ColorAccentIcon        var(--Blue-Dark)
+    --ColorAccentText        var(--Blue-Dark)
+    --ColorTextOnAccent      var(--ColorGrey000)
+    --ColorIconOnAccent      var(--ColorGrey100)
+    // Background Shading
+    --ColorBGLight var(--Grey000)
+    --ColorBG      var(--Grey200)
+    --ColorBGDark  var(--Grey300)
+    // Dots
+    --ColorDot       var(--Grey400)
+    --ColorDotDark   var(--Grey600)
+    --ColorDotActive var(--ColorAccentIcon)
+    // Shadows
+    --Shadow       2px 2px 4px 2px var(--ColorBGDark), -2px -2px 4px 2px var(--ColorBGLight)
+    --ShadowRaised 0px 0px 24px 0px var(--Grey400), 0px 0px 0px 0px var(--ColorBGLight)
+    --ShadowText   var(--Shadow)
+    // Radius
+    --Radius      12px
+    --RadiusBig   999px
+    --RadiusSmall 6px
+    // Borders & Dividers
+    --WidthBorder 2px
+    --ColorBorder var(--Grey300)
+    // ANIMATIONS
+    // Transitions
+    --TimeTrans     .2s
+    --TimeTransLong .4s
+    // SIZE & SCALE
+    --SizeBase 8px
+    // Blocks
+    --SizeBlock      calc(8 * var(--SizeBase))
+    --SizeBlockSmall calc(4 * var(--SizeBase))
+    --SizeField      calc(1.125 * var(--SizeBlock))
+    // Dots
+    --SizeDot var(--SizeBase)
+    // Spacing
+    --SpacingSmall calc(0.75 * var(--SizeBase))
+    --Spacing      calc(1.5 * var(--SizeBase))
+    --SpacingLarge calc(3 * var(--SizeBase))
+    --SpacingText  calc(0.5 * var(--SizeBase))
+    // Elements
+    --SizeElemS calc(2 * var(--SizeBlock) + var(--SpacingLarge))
+    --SizeElemM calc(32 * var(--SizeBase))
+    --SizeElemL calc(48 * var(--SizeBase))
+    // PAGE
+    --WidthPageMax   1200px
+    --WidthScrollbar calc(var(--SizeDot) + 2 * var(--SpacingSmall))
+    --SizeProfileImg calc(2 * var(--SizeBlock))
+    // Textarea
+    --HeightTextarea      calc(2 * (var(--SizeBlock) + var(--Spacing)) - var(--Spacing))
+    --HeightTextareaLarge calc(3 * (var(--SizeBlock) + var(--Spacing)) - var(--Spacing))
+    // Modals
+    --WidthModal calc(var(--SizeElemM) + 2 * var(--SpacingLarge))
 
-// FONTS
-// Font Family
-$FontFamily     = 'Titillium Web', sans-serif
-$FontFamilyMono = 'Overpass Mono', monospace
-$FontFamilyIcon = 'Material Icons Two Tone'
-// Line Height Correction
-$LHC = -1px
-// Icon Space from Image Border
-$IconSpace = 2px
-// Font Weight
-$FW_Light = 400
-$FW_Bold  = 600
-$FW_Mono  = 400
-// Font Size
-$FZ_Text      = 14px
-$FZ_Button    = 15px
-$FZ_Heading   = 24px
-$FZ_Headline  = 20px
-$FZ_Caption   = 12px
-$FZ_Display   = 32px
-$FZ_IconSmall = 20px
-$FZ_Icon      = 24px
-$FZ_IconLarge = 32px
 
-ellipsis()
-    overflow      hidden
-    white-space   nowrap
-    text-overflow ellipsis
-
-// IDENTITY
-// Accent
-$ColorAccent            = $Blue[1]
-$ColorAccentIcon        = $Blue[2]
-$ColorAccentText        = $Blue[2]
-$ColorTextOnAccent      = $ColorWhiteTextPri
-$ColorIconOnAccent      = $ColorWhiteTextPri
-$ColorAccentTranslucent = rgba($ColorAccent, .5)
-
-$ColorPlayerWhite = $Blue
-$ColorPlayerBlack = $Red
-
-// Background Shading
-$ColorBGLight = $Grey000
-$ColorBG      = $Grey200
-$ColorBGDark  = $Grey300
-// Dots
-$ColorDot       = $Grey400
-$ColorDotDark   = $Grey600
-$ColorDotActive = $ColorAccentIcon
-// Shadows
-$Shadow          = 2px 2px 4px 2px $ColorBGDark, -2px -2px 4px 2px $ColorBGLight
-$ShadowRaised    = 0px 0px 24px 0px $Grey400, 0px 0px 0px 0px $ColorBGLight
-$ShadowText      = $Shadow
-// TEXTURE
-bg-texture()
-    background-color $ColorAccentText
-    background-image url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 56 28' width='56' height='28'%3E%3Cpath fill='%23000000' fill-opacity='0.12' d='M56 26v2h-7.75c2.3-1.27 4.94-2 7.75-2zm-26 2a2 2 0 1 0-4 0h-4.09A25.98 25.98 0 0 0 0 16v-2c.67 0 1.34.02 2 .07V14a2 2 0 0 0-2-2v-2a4 4 0 0 1 3.98 3.6 28.09 28.09 0 0 1 2.8-3.86A8 8 0 0 0 0 6V4a9.99 9.99 0 0 1 8.17 4.23c.94-.95 1.96-1.83 3.03-2.63A13.98 13.98 0 0 0 0 0h7.75c2 1.1 3.73 2.63 5.1 4.45 1.12-.72 2.3-1.37 3.53-1.93A20.1 20.1 0 0 0 14.28 0h2.7c.45.56.88 1.14 1.29 1.74 1.3-.48 2.63-.87 4-1.15-.11-.2-.23-.4-.36-.59H26v.07a28.4 28.4 0 0 1 4 0V0h4.09l-.37.59c1.38.28 2.72.67 4.01 1.15.4-.6.84-1.18 1.3-1.74h2.69a20.1 20.1 0 0 0-2.1 2.52c1.23.56 2.41 1.2 3.54 1.93A16.08 16.08 0 0 1 48.25 0H56c-4.58 0-8.65 2.2-11.2 5.6 1.07.8 2.09 1.68 3.03 2.63A9.99 9.99 0 0 1 56 4v2a8 8 0 0 0-6.77 3.74c1.03 1.2 1.97 2.5 2.79 3.86A4 4 0 0 1 56 10v2a2 2 0 0 0-2 2.07 28.4 28.4 0 0 1 2-.07v2c-9.2 0-17.3 4.78-21.91 12H30zM7.75 28H0v-2c2.81 0 5.46.73 7.75 2zM56 20v2c-5.6 0-10.65 2.3-14.28 6h-2.7c4.04-4.89 10.15-8 16.98-8zm-39.03 8h-2.69C10.65 24.3 5.6 22 0 22v-2c6.83 0 12.94 3.11 16.97 8zm15.01-.4a28.09 28.09 0 0 1 2.8-3.86 8 8 0 0 0-13.55 0c1.03 1.2 1.97 2.5 2.79 3.86a4 4 0 0 1 7.96 0zm14.29-11.86c1.3-.48 2.63-.87 4-1.15a25.99 25.99 0 0 0-44.55 0c1.38.28 2.72.67 4.01 1.15a21.98 21.98 0 0 1 36.54 0zm-5.43 2.71c1.13-.72 2.3-1.37 3.54-1.93a19.98 19.98 0 0 0-32.76 0c1.23.56 2.41 1.2 3.54 1.93a15.98 15.98 0 0 1 25.68 0zm-4.67 3.78c.94-.95 1.96-1.83 3.03-2.63a13.98 13.98 0 0 0-22.4 0c1.07.8 2.09 1.68 3.03 2.63a9.99 9.99 0 0 1 16.34 0z'%3E%3C/path%3E%3C/svg%3E")
-// Radius
-$Radius      = 12px
-$RadiusBig   = 999px
-$RadiusSmall = 6px
-// Borders & Dividers
-$WidthBorder = 2px
-$ColorBorder = $Grey300
-
-// ANIMATIONS
-// Transitions
-$TimeTrans     = .2s
-$TimeTransLong = .4s
-
-// SIZE & SCALE
-$SizeBase = 8px
-// Blocks
-$SizeBlock      = 8 * $SizeBase
-$SizeBlockSmall = 4 * $SizeBase
-$SizeField      = 1.125 * $SizeBlock
-// Dots
-$SizeDot = $SizeBase
-// Spacing
-$SpacingSmall = 0.75 * $SizeBase
-$Spacing      = 1.5 * $SizeBase
-$SpacingLarge = 3 * $SizeBase
-$SpacingText  = 0.5 * $SizeBase
-// Elements
-$SizeElemS = 2 * $SizeBlock + $SpacingLarge
-$SizeElemM = 32 * $SizeBase
-$SizeElemL = 48 * $SizeBase
-
-// PAGE
-$WidthPageMax   = 1200px
-$WidthScrollbar = ($SizeDot + 2 * $SpacingSmall)
-$SizeProfileImg = 2 * $SizeBlock
-// Textarea
-$HeightTextarea      = 2 * ($SizeBlock + $Spacing) - $Spacing
-$HeightTextareaLarge = 3 * ($SizeBlock + $Spacing) - $Spacing
-// Modals
-$WidthModal = $SizeElemMax + 2 * $SpacingLarge
+body.theme_dark
+    // Colors: Status
+    --ColorError   var(--Red-Light)
+    --ColorSuccess var(--Blue-Light)
+    --ColorWarning var(--Orange-Light)
+    // Text/Icons: Opacity
+    --OpacityPri 1
+    --OpacitySec .6
+    --OpacityTri .4
+    // Colors: Text
+    --ColorTextPri var(--Grey000)
+    --ColorTextSec var(--Grey200)
+    --ColorTextTri var(--Grey400)
+    // Colors: Icons
+    --ColorIconPri      var(--Grey100)
+    --ColorIconSec      var(--Grey300)
+    --ColorIconTri      var(--Grey500)
+    // Accent
+    --ColorAccent            var(--Blue-Light)
+    --ColorAccentIcon        var(--Blue-Medium)
+    --ColorAccentText        var(--Blue-Medium)
+    --ColorTextOnAccent      var(--Grey000)
+    --ColorIconOnAccent      var(--Grey100)
+    // Background Shading
+    --ColorBGLight var(--Grey800)
+    --ColorBG      var(--Grey850)
+    --ColorBGDark  var(--Grey900)
+    // Dots
+    --ColorDot       var(--Grey400)
+    --ColorDotDark   var(--Grey600)
+    // Shadows
+    --Shadow       inset 0 0 0 2px var(--ColorBGDark)
+    --ShadowRaised inset 0 0 0 2px var(--ColorBGDark)

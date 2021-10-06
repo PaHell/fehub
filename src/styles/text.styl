@@ -1,28 +1,30 @@
 .text
-	margin-top  $LHC
-	font-size   $FZ_Text
-	transition  color $TimeTrans
-	font-weight $FW_Light
+	margin-top  var(--LHC)
+	font-size   var(--FZ_Text)
+	transition  color var(--TimeTrans)
+	font-weight var(--FW_Light)
+	color       var(--ColorTextPri)
+	line-height 1.25
 
 	&.heading
-		margin-top (2*$LHC)
-		font-size  $FZ_Heading
+		margin-top calc(2 * var(--LHC))
+		font-size  var(--FZ_Heading)
 
 	&.headline
-		font-size $FZ_Headline
+		font-size var(--FZ_Headline)
 
 	&.display
-		font-size $FZ_Display
+		font-size var(--FZ_Display)
 
 	&.caption
-		font-size $FZ_Caption
-		color     $ColorBlackTextSec
+		font-size var(--FZ_Caption)
+		color     var(--ColorTextSec)
 
 	&.bold
-		font-weight $FW_Bold
+		font-weight var(--FW_Bold)
 
 	&.secondary
-		color $ColorBlackTextSec
+		color var(--ColorTextSec)
 
 	&.ta-right
 		text-align right

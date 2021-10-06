@@ -308,10 +308,10 @@
 <style lang="stylus" global>
 	.grid
 		display             grid
-		grid-auto-rows      $SizeBlock
-		grid-auto-columns   2 * $SizeBlock
-		grid-gap            $SpacingLarge
-		//padding             $SizeBlockSmall
+		grid-auto-rows      var(--SizeBlock)
+		grid-auto-columns   calc(2 * var(--SizeBlock))
+		grid-gap            var(--SpacingLarge)
+		//padding             var(--SizeBlockSmall)
 		//box-sizing          content-box
 		//transform           rotateX(-45deg) rotateY(0) rotateZ(30deg)
 		//transform-style     preserve-3d
@@ -321,19 +321,19 @@
 				overflow         hidden
 				position         relative
 				z-index          12
-				background-color $ColorBG
-				border-radius    $Radius
-				box-shadow       $Shadow
-				transition       background-color $TimeTrans, box-shadow $TimeTrans
+				background-color var(--ColorBG)
+				border-radius    var(--Radius)
+				box-shadow       var(--Shadow)
+				transition       background-color var(--TimeTrans), box-shadow var(--TimeTrans)
 				
 				&.active
 					z-index          18
-					background-color $ColorBGLight
-					box-shadow       $ShadowRaised
+					background-color var(--ColorBGLight)
+					box-shadow       var(--ShadowRaised)
 			
 				&[disabled]
-					border           $WidthBorder dashed $ColorBorder
-					border-radius    $Radius
+					border           var(--WidthBorder) dashed var(--ColorBorder)
+					border-radius    var(--Radius)
 					box-shadow       none
-					background-color $ColorBG
+					background-color var(--ColorBG)
 </style>

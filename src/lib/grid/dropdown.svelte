@@ -90,33 +90,33 @@
 <style lang="stylus" global>
 		
 	.cell-dropdown
-		height           $SizeBlock
-		box-shadow       $Shadow
-		background-color $ColorBG
-		border-radius    $Radius
-		transition       height $TimeTrans, box-shadow $TimeTrans, background-color $TimeTrans !important
+		height           var(--SizeBlock)
+		box-shadow       var(--Shadow)
+		background-color var(--ColorBG)
+		border-radius    var(--Radius)
+		transition       height var(--TimeTrans), box-shadow var(--TimeTrans), background-color var(--TimeTrans) !important
 		will-change      height
 		
 		> #container-cursor
 			width 100%
 			> #cursor
 				width  50%
-				height $SizeBlock
+				height var(--SizeBlock)
 				margin-left 25%
 		
 		> button
 			display         flex
 			align-items     center
 			width           100%
-			height          $SizeBlock
+			height          var(--SizeBlock)
 			
 			> .icon
-				width $SizeBlock
+				width var(--SizeBlock)
 				
 				&:last-child
-					color            $ColorIconTri
+					color            var(--ColorIconTri)
 					transform-origin center center
-					transition       color $TimeTrans, transform $TimeTrans
+					transition       color var(--TimeTrans), transform var(--TimeTrans)
 				
 			> div
 				flex 1
@@ -125,14 +125,14 @@
 					ellipsis()
 					
 					&.label
-						font-size      $FZ_Caption
+						font-size      var(--FZ_Caption)
 						text-transform uppercase
-						font-weight    $FW_Bold
-						color          $ColorBlackTextTri
+						font-weight    var(--FW_Bold)
+						color          var(--ColorTextTri)
 						letter-spacing .25px
 			
 			&.hovered > .icon:last-child
-				color $ColorAccentIcon !important
+				color var(--ColorAccentIcon) !important
 		
 		> .options
 			flex 1
@@ -141,23 +141,23 @@
 				display      flex
 				align-items  center
 				width        100%
-				height       $SizeBlock
+				height       var(--SizeBlock)
 
 				> .icon
-					width $SizeBlock
+					width var(--SizeBlock)
 
 				> .text
 					ellipsis()
 				
 				&.hovered
 					> .icon
-						color $ColorAccentIcon
+						color var(--ColorAccentIcon)
 						
 		&.active > button > .icon
 			&:first-child
-				color $ColorAccentIcon
+				color var(--ColorAccentIcon)
 			&:last-child
-				color $ColorIconPri
+				color var(--ColorIconPri)
 							
 		&.expanded
 			> button

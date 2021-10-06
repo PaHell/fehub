@@ -47,9 +47,9 @@
 			display         flex
 			flex-direction  column
 			justify-content space-between
-			width           $SizeBlock
-			height          $SizeBlock
-			transition      width $TimeTrans, height $TimeTrans, margin $TimeTrans, opacity $TimeTrans
+			width           var(--SizeBlock)
+			height          var(--SizeBlock)
+			transition      width var(--TimeTrans), height var(--TimeTrans), margin var(--TimeTrans), opacity var(--TimeTrans)
 			will-change     width, height, margin
 			
 			> .row
@@ -61,20 +61,20 @@
 				&:after
 					content ''
 					display block
-					width   $Radius
-					height  $Radius
-					border  0 solid $ColorAccent
+					width   var(--Radius)
+					height  var(--Radius)
+					border  0 solid var(--ColorAccent)
 				&:first-child:before
-					border-width $WidthBorder 0 0 $WidthBorder
-					border-top-left-radius $Radius
+					border-width var(--WidthBorder) 0 0 var(--WidthBorder)
+					border-top-left-radius var(--Radius)
 				&:first-child:after
-					border-width  $WidthBorder $WidthBorder 0 0
-					border-top-right-radius $Radius
+					border-width  var(--WidthBorder) var(--WidthBorder) 0 0
+					border-top-right-radius var(--Radius)
 				
 				&:last-child:before
-					border-width 0 0 $WidthBorder $WidthBorder
-					border-bottom-left-radius $Radius
+					border-width 0 0 var(--WidthBorder) var(--WidthBorder)
+					border-bottom-left-radius var(--Radius)
 				&:last-child:after
-					border-width 0 $WidthBorder $WidthBorder 0
-					border-bottom-right-radius $Radius
+					border-width 0 var(--WidthBorder) var(--WidthBorder) 0
+					border-bottom-right-radius var(--Radius)
 </style>

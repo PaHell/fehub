@@ -38,7 +38,7 @@
 		justify-content  flex-start
 		width            100%
 		height           100%
-		padding          0 (.5 * ($SizeBlock - $FZ_Icon))
+		padding          0 calc(.5 * (var(--SizeBlock) - var(--FZ_Icon)))
 		background-color transparent !important
 		box-shadow       none !important
 		
@@ -49,75 +49,75 @@
 			justify-content center
 		
 		> .icon
-			width  $FZ_Icon
-			height $SizeBlock
+			width  var(--FZ_Icon)
+			height var(--SizeBlock)
 			
 		> .text
-			color $ColorBlackTextSec
+			color var(--ColorTextSec)
 			
 			&:not(:first-child)
-				margin-left .5 * ($SizeBlock - $FZ_Icon)
+				margin-left calc(.5 * (var(--SizeBlock) - var(--FZ_Icon)))
 		
 		> .divider
 			flex             1
-			height           $WidthBorder
-			background-image linear-gradient(to right, transparent, $ColorBGDark)
+			height           var(--WidthBorder)
+			background-image linear-gradient(to right, transparent, var(--ColorBGDark))
 
 		> .info
 			display          flex
 			align-items      center
-			height           $SizeBlockSmall
-			padding          0 $SpacingSmall
+			height           var(--SizeBlockSmall)
+			padding          0 var(--SpacingSmall)
 			margin-left      auto
-			border           $WidthBorder solid $ColorBorder
-			border-radius    $RadiusBig
-			background-color $ColorBG
+			border           var(--WidthBorder) solid var(--ColorBorder)
+			border-radius    var(--RadiusBig)
+			background-color var(--ColorBG)
 			
 			> .icon
-				width        $FZ_IconSmall
-				margin-right $SpacingSmall
-				font-size    $FZ_IconSmall
-				color        $ColorIconTri
+				width        var(--FZ_IconSmall)
+				margin-right var(--SpacingSmall)
+				font-size    var(--FZ_IconSmall)
+				color        var(--ColorIconTri)
 
 			> .text
-				color        $ColorBlackTextTri
-				margin-right .25 * $FZ_IconSmall
+				color        var(--ColorTextTri)
+				margin-right calc(.25 * var(--FZ_IconSmall))
 
 		&.level-heading
 			> .icon
-				width     $FZ_IconLarge
-				color     $ColorAccent
-				font-size $FZ_IconLarge
-				margin    0 (-.5 * ($FZ_IconLarge - $FZ_Icon))
+				width     var(--FZ_IconLarge)
+				color     var(--ColorAccent)
+				font-size var(--FZ_IconLarge)
+				margin    0 calc(-.5 * (var(--FZ_IconLarge) - var(--FZ_Icon)))
 			
 			> .text
-				color $ColorBlackTextPri
+				color var(--ColorTextPri)
 		
 		&.level-headline
-			background-image linear-gradient(to right, $ColorBGDark, transparent 8*$SizeBlock)
-			border-radius    $Radius
+			background-image linear-gradient(to right, var(--ColorBGDark), transparent calc(8*var(--SizeBlock)))
+			border-radius    var(--Radius)
 			
 			> .icon
-				color $ColorIconPri
+				color var(--ColorIconPri)
 			
 			> .text
-				font-weight    $FW_Bold
-				color          $ColorBlackTextSec
+				font-weight    var(--FW_Bold)
+				color          var(--ColorTextSec)
 						
 		&.level-default
 			> .icon
-				margin    0 $SpacingSmall 0 0 !important
-				font-size $FZ_IconSmall
-				color     $ColorIconSec
+				margin    0 var(--SpacingSmall) 0 0 !important
+				font-size var(--FZ_IconSmall)
+				color     var(--ColorIconSec)
 			> .text
-				color $ColorBlackTextSec
+				color var(--ColorTextSec)
 		
 		&.level-caption
 			> .icon
-				margin    0 $SpacingSmall 0 0 !important
-				font-size $FZ_IconSmall
-				color     $ColorIconTri
+				margin    0 var(--SpacingSmall) 0 0 !important
+				font-size var(--FZ_IconSmall)
+				color     var(--ColorIconTri)
 			> .text
-				color $ColorBlackTextTri
+				color var(--ColorTextTri)
 
 </style>

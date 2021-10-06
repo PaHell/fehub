@@ -1,17 +1,32 @@
 <script>
-	import { set as setLocale, get as getLocale } from '../i18n';
+	import { goto } from '$app/navigation';
+	import { set as setLocale, get as getLocale } from '$src/i18n';
+	import { login } from '$src/auth';
+	import { lastUsername } from '$src/store';
 	import Grid from '$lib/grid.svelte';
+
+	function performLogin() {
+		login(gridElements.inputUsername.value, gridElements.inputPassword.value)
+			.then(data => {
+				console.warn('login', data);
+				goto('/');
+			})
+			.catch(err => {
+				console.warn('login', err);
+			});
+	}
+
 	let gridElements = {
 		textApp: {
 			type: 'text',
-			text: 'general.app',
+			text: import.meta.env.VITE_APP_NAME,
 			icon: 'image',
 			level: 'heading'
 		},
 		textHeading: {
 			type: 'text',
-			text: 'auth.register.heading',
-			icon: 'manage_accounts',
+			text: 'auth.login.heading',
+			icon: 'perm_identity',
 			level: 'headline'
 		},
 		language: {
@@ -28,12 +43,13 @@
 		},
 		inputUsername: {
 			type: 'input',
-			value: '',
+			value: $lastUsername,
 			name: 'username',
 			label: 'auth.username.label',
 			placeholder: 'auth.username.placeholder',
 			icon: 'face',
-			autofocus: true
+			autofocus: true,
+			onChange: val => lastUsername.set(val)
 		},
 		inputPassword: {
 			type: 'input',
@@ -47,20 +63,18 @@
 			type: 'button',
 			icon: 'login',
 			text: 'auth.login.action',
-			value: 'login'
+			value: performLogin
 		},
-		textLogin: {
+		textRegister: {
 			type: 'text',
-			text: 'auth.login.text',
+			text: 'auth.register.text',
 			align: 'right'
 		},
 		buttonRegister: {
 			type: 'button',
 			icon: 'person_add',
 			text: 'auth.register.action',
-			value: () => {
-				console.log('register...');
-			}
+			value: 'register'
 		},
 	};
 	// prettier-ignore
@@ -70,8 +84,8 @@
 		[ 1, 'textHeading'  , 'textHeading'   ],
 		[ 1, 'inputUsername', 'inputUsername' ],
 		[ 1, 'inputPassword', 'inputPassword' ],
-		[ 1, '.'            , 'buttonRegister'],
-		[ 1, 'textLogin'    , 'buttonLogin'   ],
+		[ 1, '.'            , 'buttonLogin'   ],
+		[ 1, 'textRegister' , 'buttonRegister'],
 	];
 </script>
 

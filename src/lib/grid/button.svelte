@@ -71,17 +71,18 @@
 		height           100%
 		
 		> .icon
-			width       $SizeBlock
+			width       var(--SizeBlock)
 			flex-shrink 0
 			
 		> .text
-			font-size      $FZ_Button
+			font-size      var(--FZ_Button)
 			text-transform uppercase
-			
+			ellipsis()
+
 			&:first-child
-				margin-left .5 * ($SizeBlock - $FZ_Icon)
-			&:not(:first-child)
-				margin-right .5 * ($SizeBlock - $FZ_Icon)
+				margin-left calc(.5 * (var(--SizeBlock) - var(--FZ_Icon)))
+			&:not(:first-child):last-child
+				margin-right calc(.5 * (var(--SizeBlock) - var(--FZ_Icon)))
 
 		&.url,
 		&.link
@@ -93,14 +94,14 @@
 		&.active
 			> .icon
 				&:first-child
-					color $ColorAccent
+					color var(--ColorAccent)
 				&:last-child
-					color $ColorIconPri
+					color var(--ColorIconPri)
 	
 		&[disabled]
 			> .icon
-				color $ColorIconTri !important
+				color var(--ColorIconTri) !important
 			> .text
-				color $ColorBlackTextTri
+				color var(--ColorTextTri)
 
 </style>

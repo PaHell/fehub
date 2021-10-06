@@ -102,27 +102,27 @@
 		
 	.cell-select
 		overflow         hidden
-		height           $SizeBlock
-		box-shadow       $Shadow
-		background-color $ColorBG
-		border-radius    $Radius
-		transition       width $TimeTrans, height $TimeTrans, margin $TimeTrans, box-shadow $TimeTrans, background-color $TimeTrans !important
+		height           var(--SizeBlock)
+		box-shadow       var(--Shadow)
+		background-color var(--ColorBG)
+		border-radius    var(--Radius)
+		transition       width var(--TimeTrans), height var(--TimeTrans), margin var(--TimeTrans), box-shadow var(--TimeTrans), background-color var(--TimeTrans) !important
 		will-change      width, height, margin
 		
 		> button
 			display         flex
 			align-items     center
 			width           100%
-			height          $SizeBlock
+			height          var(--SizeBlock)
 			
 			> .icon
-				width       $SizeBlock
+				width       var(--SizeBlock)
 				flex-shrink 0
 				
 				&:last-child
-					color            $ColorIconTri
+					color            var(--ColorIconTri)
 					transform-origin center center
-					transition       color $TimeTrans, transform $TimeTrans
+					transition       color var(--TimeTrans), transform var(--TimeTrans)
 				
 			> div
 				flex 1
@@ -131,14 +131,14 @@
 					ellipsis()
 					
 					&.label
-						font-size      $FZ_Caption
+						font-size      var(--FZ_Caption)
 						text-transform uppercase
-						font-weight    $FW_Bold
-						color          $ColorBlackTextTri
+						font-weight    var(--FW_Bold)
+						color          var(--ColorTextTri)
 						letter-spacing .25px
 			
 			&.hovered > .icon:last-child
-				color $ColorAccentIcon !important
+				color var(--ColorAccentIcon) !important
 		
 		> .options
 			flex 1
@@ -147,42 +147,42 @@
 				display      flex
 				align-items  center
 				width        100%
-				height       $SizeBlock
+				height       var(--SizeBlock)
 				
 				> .control
-					width            $FZ_IconSmall
-					height           $FZ_IconSmall
-					margin           .5 * ($SizeBlock - $FZ_IconSmall)
+					width            var(--FZ_IconSmall)
+					height           var(--FZ_IconSmall)
+					margin           calc(.5 * (var(--SizeBlock) - var(--FZ_IconSmall)))
 					border-radius    100%
-					border           $WidthBorder solid $ColorIconTri
-					background-color $ColorBGLight
-					transition       border-color $TimeTrans, background-color $TimeTrans
+					border           var(--WidthBorder) solid var(--ColorIconTri)
+					background-color var(--ColorBGLight)
+					transition       border-color var(--TimeTrans), background-color var(--TimeTrans)
 					
 					&:after
 						content       ''
 						display       block
-						width         $FZ_IconSmall - 6 * $WidthBorder
-						height        $FZ_IconSmall - 6 * $WidthBorder
-						margin        2 * $WidthBorder
+						width         calc(var(--FZ_IconSmall) - 6 * var(--WidthBorder))
+						height        calc(var(--FZ_IconSmall) - 6 * var(--WidthBorder))
+						margin        calc(2 * var(--WidthBorder))
 						border-radius 100%
 				
 				&.selected					
 					> .control
-						border-color $ColorIconPri
+						border-color var(--ColorIconPri)
 						&:after
-							background-color $ColorIconPri
+							background-color var(--ColorIconPri)
 				&.hovered
 					> .control
-						border-color $ColorAccentIcon
+						border-color var(--ColorAccentIcon)
 						
 					&.selected > .control:after
-						background-color $ColorAccentIcon
+						background-color var(--ColorAccentIcon)
 						
 		&.active > button > .icon
 			&:first-child
-				color $ColorAccentIcon
+				color var(--ColorAccentIcon)
 			&:last-child
-				color $ColorIconPri
+				color var(--ColorIconPri)
 							
 		&.expanded
 			overflow visible !important
@@ -192,8 +192,8 @@
 
 		// SIZE DEPENDENT
 		&.width-1
-			width $SizeBlock
+			width var(--SizeBlock)
 		&.expanded.width-1
-			width       3 * $SizeBlock
-			margin-left -2 * $SizeBlock
+			width       calc(3 * var(--SizeBlock))
+			margin-left calc(-2 * var(--SizeBlock))
 </style>

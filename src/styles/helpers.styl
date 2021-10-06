@@ -17,14 +17,14 @@
 
 	> *
 		&:not(:last-child)
-			margin-right $Spacing
+			margin-right var(--Spacing)
 
 
 	> .icon:first-child
 		flex-shrink 0
-		width       $SizeBlock
+		width       var(--SizeBlock)
 		margin      0
-		line-height $SizeBlock
+		line-height var(--SizeBlock)
 	
 	> .flex-col
 		width 0
@@ -43,7 +43,7 @@
 	width           100%
 
 	> *:not(:last-child)
-		margin-bottom $Spacing
+		margin-bottom var(--Spacing)
 
 	&.center
 		align-items center

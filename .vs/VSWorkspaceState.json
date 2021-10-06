@@ -5,9 +5,9 @@
     "\\src\\lib",
     "\\src\\locale",
     "\\src\\routes",
-    "\\src\\styles",
-    "\\static"
+    "\\src\\routes\\auth",
+    "\\src\\routes\\project"
   ],
-  "SelectedNode": "\\src\\locale\\en.json",
+  "SelectedNode": "\\src\\routes\\index.svelte",
   "PreviewInSolutionExplorer": false
 }

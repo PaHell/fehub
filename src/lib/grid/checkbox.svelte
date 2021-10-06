@@ -13,12 +13,14 @@
 		icon: false,
 		variant: 'checkbox',
 		value: false,
-		disabled: false
+		disabled: false,
+		onChange: () => {}
 	};
 	props = { ...defaults, ...props };
 
 	export const onClick = (event) => {
 		props.value = !props.value;
+		props.onChange?.(props.value);
 	};
 </script>
 
@@ -43,75 +45,75 @@
 		height          100%
 		
 		> .icon
-			width $SizeBlock
+			width var(--SizeBlock)
 		
 		> .text
 			flex 1
-			padding-right .5 * ($SizeBlock - $FZ_Icon)
+			padding-right calc(.5 * (var(--SizeBlock) - var(--FZ_Icon)))
 			ellipsis()
 			
 			&:first-child
-				padding-left .5 * ($SizeBlock - $FZ_Icon)
+				padding-left calc( .5 * (var(--SizeBlock) - var(--FZ_Icon)))
 		
 		> .control
 			
 			&.checkbox
-				width            $FZ_IconSmall
-				height           $FZ_IconSmall
-				margin-right     .5 * ($SizeBlock - $FZ_Icon)
-				border           $WidthBorder solid $ColorIconTri
-				border-radius    .4 * $FZ_IconSmall
-				background-color $ColorBGLight
+				width            var(--FZ_IconSmall)
+				height           var(--FZ_IconSmall)
+				margin-right     calc(.5 * (var(--SizeBlock) - var(--FZ_Icon)))
+				border           var(--WidthBorder) solid var(--ColorIconTri)
+				border-radius    calc(.4 * var(--FZ_IconSmall))
+				background-color var(--ColorBGLight)
 				
 				> div
-					width         $FZ_Icon
-					height        $FZ_Icon
-					margin-top    -.5 * ($FZ_Icon - $FZ_IconSmall) - $WidthBorder - 2px
+					width         var(--FZ_Icon)
+					height        var(--FZ_Icon)
+					margin-top    calc(-.5 * (var(--FZ_Icon) - var(--FZ_IconSmall)) - var(--WidthBorder) - 2px)
 					margin-left   -1px
 					
 					> .icon
 						width            100%
 						height           100%
-						line-height      $FZ_Icon
-						color            $ColorIconSec
+						line-height      var(--FZ_Icon)
+						color            var(--ColorIconSec)
 						transform        scale(.5) rotateY(90deg)
 						transform-origin 30% 75%
-						transition       transform $TimeTrans, color $TimeTrans
+						transition       transform var(--TimeTrans), color var(--TimeTrans)
 			
 				&.checked > div > .icon
 					transform scale(1) rotateY(0)
 				
 			&.toggle
-				width            1.75 * $FZ_IconSmall
-				height           $FZ_IconSmall
-				margin-right     .5 * ($SizeBlock - $FZ_Icon)
-				border           $WidthBorder solid $ColorIconTri
-				border-radius    .4 * $FZ_IconSmall
-				background-color $ColorBG
+				width            calc(1.75 * var(--FZ_IconSmall))
+				height           var(--FZ_IconSmall)
+				margin-right     calc(.5 * (var(--SizeBlock) - var(--FZ_Icon)))
+				border           var(--WidthBorder) solid var(--ColorIconTri)
+				border-radius    calc(.4 * var(--FZ_IconSmall))
+				background-color var(--ColorBG)
 				
 				> div
 					width            @height
 					height           @height
-					margin           -1 * $WidthBorder
-					border           $WidthBorder solid $ColorIconSec
+					margin           calc(-1 * var(--WidthBorder))
+					border           var(--WidthBorder) solid var(--ColorIconSec)
 					border-radius    @border-radius
-					background-color $ColorBGLight
-					transition       margin-left $TimeTrans, border-color $TimeTrans
+					background-color var(--ColorBGLight)
+					transition       margin-left var(--TimeTrans), border-color var(--TimeTrans)
 					will-change      margin-left
 					
 					> .icon
 						display none
 
 				&.checked > div
-					margin-left .75 * $FZ_IconSmall - $WidthBorder
+					margin-left calc(.75 * var(--FZ_IconSmall) - var(--WidthBorder))
 		
 		&.active
 			> .icon
-				color $ColorAccentIcon
+				color var(--ColorAccentIcon)
 			
 			> .control
 				&.checkbox > div > .icon
-					color $ColorAccentIcon
+					color var(--ColorAccentIcon)
 				&.toggle > div
-					border-color $ColorAccentIcon
+					border-color var(--ColorAccentIcon)
 </style>

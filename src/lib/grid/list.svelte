@@ -109,36 +109,36 @@
 				flex-direction   column
 				justify-content  center
 				align-items      center
-				width            $SizeElemS
-				height           $SizeElemS
-				background-color $ColorBG
-				box-shadow       $Shadow
-				border-radius    $Radius
-				transition       background-color $TimeTrans, box-shadow $TimeTrans
+				width            var(--SizeElemS)
+				height           var(--SizeElemS)
+				background-color var(--ColorBG)
+				box-shadow       var(--Shadow)
+				border-radius    var(--Radius)
+				transition       background-color var(--TimeTrans), box-shadow var(--TimeTrans)
 
 				&:not(:last-child)
-					margin-right $SpacingLarge
+					margin-right var(--SpacingLarge)
 
 				> .img
 					overflow         hidden
 					display          flex
 					justify-content  center
 					align-items      center
-					width            $SizeBlock
-					height           $SizeBlock
-					margin-bottom    $Spacing
-					//background-color $ColorBGLight
-					border-radius    $Radius
+					width            var(--SizeBlock)
+					height           var(--SizeBlock)
+					margin-bottom    var(--Spacing)
+					//background-color var(--ColorBGLight)
+					border-radius    var(--Radius)
 
 					> img
 						height 100%
 
 				> .text:not(:last-child)
-					margin-bottom $SpacingText
+					margin-bottom var(--SpacingText)
 
 		&.active > .items > button.hovered
-			background-color $ColorBGLight
-			box-shadow       $ShadowRaised
+			background-color var(--ColorBGLight)
+			box-shadow       var(--ShadowRaised)
 
 		> .empty
 			display         flex
@@ -146,10 +146,10 @@
 			align-items     center
 
 			> .icon
-				margin-right $SpacingText
-				color        $ColorIconTri
+				margin-right var(--SpacingText)
+				color        var(--ColorIconTri)
 
 			> .text
-				color $ColorBlackTextTri
+				color var(--ColorTextTri)
 
 </style>

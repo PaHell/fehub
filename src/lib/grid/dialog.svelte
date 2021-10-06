@@ -13,10 +13,10 @@
 
 <style lang="stylus" global>
 	#dialog
-		width            5 * $SizeField + 4 * $WidthBorder
-		height           $SizeField + $SizeBlockSmall + $WidthBorder
+		width            calc(5 * var(--SizeField) + 4 * var(--WidthBorder))
+		height           calc(var(--SizeField) + var(--SizeBlockSmall) + var(--WidthBorder))
 		position         relative
-		background-color $ColorBorder
-		box-shadow       $ShadowRaised
-		border-radius    $Radius	
+		background-color var(--ColorBorder)
+		box-shadow       var(--ShadowRaised)
+		border-radius    var(--Radius)	
 </style>

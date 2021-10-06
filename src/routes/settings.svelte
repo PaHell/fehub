@@ -1,118 +1,48 @@
 <script>
 	import Grid from '$lib/grid.svelte';
+	import { themeDark } from '$src/store';
+
 	let gridElements = {
-		back: {
-			type: 'button',
-			icon: 'arrow_back',
-			value: '/'
-		},
-		settings: {
+		textApp: {
 			type: 'text',
-			text: 'Settings',
-			icon: 'settings',
+			text: import.meta.env.VITE_APP_NAME,
+			icon: 'image',
 			level: 'heading'
 		},
-		game: {
+		heading: {
 			type: 'text',
-			text: 'In-Game'
+			text: 'settings.visual',
+			icon: 'visibility',
+			level: 'headline'
 		},
-		coord: {
+		buttonBack: {
+			type: 'button',
+			icon: 'arrow_back',
+			text: 'general.back',
+			value: '/',
+			autofocus: true
+		},
+		darkMode: {
 			type: 'checkbox',
-			text: 'Show Coordinates',
-			icon: 'gps_fixed',
 			variant: 'toggle',
-			value: true
-		},
-		captured: {
-			type: 'checkbox',
-			text: 'Show Captured Pieces',
-			icon: 'emoji_flags',
-			variant: 'toggle',
-			value: true
-		},
-		undo: {
-			type: 'checkbox',
-			text: 'Enable "Undo Move"',
-			icon: 'undo',
-			variant: 'toggle',
-			value: false
-		},
-		history: {
-			type: 'checkbox',
-			text: 'Show Move Info and History',
-			icon: 'history_toggle_off',
-			variant: 'toggle',
-			value: false,
-			disabled: true
-		},
-		general: {
-			type: 'text',
-			text: 'General'
-		},
-		dark: {
-			type: 'checkbox',
-			text: 'Enable Dark Mode',
 			icon: 'dark_mode',
-			variant: 'toggle',
-			value: false
+			text: 'settings.dark_mode',
+			value: $themeDark,
+			onChange: dark => { themeDark.set(dark); }
 		},
-		links: {
-			type: 'text',
-			text: 'Links'
-		},
-		terms: {
-			type: 'button',
-			icon: 'gavel',
-			text: 'Terms & Conditions',
-			value: '/site/terms',
-			variant: 'link'
-		},
-		privacy: {
-			type: 'button',
-			icon: 'security',
-			text: 'Privacy Policy',
-			value: '/site/privacy',
-			variant: 'link'
-		},
-		imprint: {
-			type: 'button',
-			icon: 'description',
-			text: 'Imprint',
-			value: '/site/imprint',
-			variant: 'link'
-		},
-		license: {
-			type: 'button',
-			icon: 'widgets',
-			text: 'License & Packages',
-			value: '/site/license',
-			variant: 'link'
-		},
-		copyright: {
-			type: 'text',
-			text: '2021 Patrick Hellebrand. All rights reserved.',
-			icon: 'copyright',
-			level: 'caption'
-		}
 	};
+	// 12:9
 	// prettier-ignore
 	let gridLayout = [
-		[ 0, 1     , 4          , 4          , 4          , 1   ], // 14:8 
-		[ 1, 'back', 'settings' , 'settings' , 'settings' , '.' ],
-		[ 1, '.'   , 'game'     , 'game'     , 'links'    , '.' ],
-		[ 1, '.'   , 'coord'    , 'captured' , 'terms'    , '.' ],
-		[ 1, '.'   , 'history'  , 'undo'     , 'privacy'  , '.' ],
-		[ 1, '.'   , 'general'  , 'general'  , 'imprint'  , '.' ],
-		[ 1, '.'   , 'dark'     , '.'        , 'license'  , '.' ],
-		[ 1, '.'   , 'copyright', 'copyright', 'copyright', '.' ],
-		[ 1, '.'   , '.'        , '.'        , '.'        , '.' ],
+		[ 0, 1           , 1          , 2          , 4          , 1          , 3          ],
+		[ 1, 'buttonBack', 'textApp'  , 'textApp'  , 'textApp'  , 'textApp'  , 'textApp'  ],
+		[ 1, 'heading'   , 'heading'  , 'heading'  , 'heading'  , 'heading'  , 'heading'  ],
+		[ 1, 'darkMode'  , 'darkMode' , 'darkMode' , '.'        , '.'        , '.'        ],
+		[ 1, '.'         , '.'        , '.'        , '.'        , '.'        , '.'        ],
+		[ 5, '.'         , '.'        , '.'        , '.'        , '.'        , '.'        ],
 	];
 </script>
 
 <template lang="pug">
 	Grid(bind:elements="{gridElements}", layout="{gridLayout}")
 </template>
-
-<style lang="stylus">
-
-</style>

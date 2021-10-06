@@ -14,7 +14,8 @@
 		value: false,
 		name: false,
 		placeholder: 'placeholder',
-		disabled: false
+		disabled: false,
+		onChange: val => {}
 	};
 	props = { ...defaults, ...props };
 
@@ -41,7 +42,8 @@
 			disabled="{props.disabled}",
 			placeholder="",
 			class:has-icon="{props.icon}",
-			class:has-label="{props.label}")
+			class:has-label="{props.label}",
+			onchange="{props.onChange?.(props.value)}")
 		.overlay
 			+if('props.icon')
 				Icon {props.icon}
@@ -54,83 +56,84 @@
 
 <style lang="stylus" global>
 
-	$InputLabelHeight = $FZ_Caption + 4px
-	$InputLineHeight = $SizeBlock - 2 * $InputLabelHeight - 4 * $WidthBorder
+	body
+		--InputLabelHeight calc(var(--FZ_Caption) + 4px)
+		--InputLineHeight  calc(var(--SizeBlock) - 2 * var(--InputLabelHeight) - 4 * var(--WidthBorder))
 
 	.cell-input
 		width    100%
 		height   100%
 			
 		> input
-			width         'calc(100% - %s)' % (2 * $WidthBorder)
-			height        'calc(100% - %s)' % (2 * $WidthBorder)
-			margin        $WidthBorder
-			padding-left  .5 * ($SizeBlock - $FZ_Icon) - $WidthBorder
-			line-height   $InputLineHeight
-			border-radius $Radius - $WidthBorder
+			width         calc(100% - var(--WidthBorder))
+			height        calc(100% - var(--WidthBorder))
+			margin        var(--WidthBorder)
+			padding-left  calc(.5 * (var(--SizeBlock) - var(--FZ_Icon)) - var(--WidthBorder))
+			line-height   var(--InputLineHeight)
+			border-radius calc(var(--Radius) - var(--WidthBorder))
 			
 			&.has-label
-				padding-top $InputLabelHeight - 4 * $WidthBorder
+				padding-top calc(var(--InputLabelHeight) - 4 * var(--WidthBorder))
 
 			&.has-icon
-				padding-left $SizeBlock - $WidthBorder
+				padding-left calc(var(--SizeBlock) - var(--WidthBorder))
 				
 			&:not(.has-label)
-				padding-bottom $InputLabelHeight - 6 * $WidthBorder
+				padding-bottom calc(var(--InputLabelHeight) - 6 * var(--WidthBorder))
 				
 				~ .overlay > .right
-					margin-top ($InputLabelHeight + $WidthBorder)
+					margin-top calc(var(--InputLabelHeight) + var(--WidthBorder))
 
 			&:not(.has-icon)
 				
 				~ .overlay > .right
-					margin-left  .5 * ($SizeBlock - $FZ_Icon)
+					margin-left  calc(.5 * (var(--SizeBlock) - var(--FZ_Icon)))
 			
 			&:focus ~ .overlay
 				> .icon
-					color $ColorAccentIcon
+					color var(--ColorAccentIcon)
 				> .right
 					> .label
-						color $ColorBlackTextSec
+						color var(--ColorTextSec)
 					> .placeholder
 						padding-left     2px
-						background-image linear-gradient(to right, $ColorBlackTextSec, transparent 1.25*$SizeBlock)
+						background-image linear-gradient(to right, var(--ColorTextSec), transparent calc(1.25*var(--SizeBlock)))
 					> .line
-						background-color $ColorAccentIcon
+						background-color var(--ColorAccentIcon)
 		
 		> .overlay
 			display        flex
 			width          100%
 			height         100%
-			margin-top     -1 * $SizeBlock
+			margin-top     calc(-1 * var(--SizeBlock))
 			pointer-events none
 			
 			> .icon
-				width  $SizeBlock
-				height $SizeBlock
+				width  var(--SizeBlock)
+				height var(--SizeBlock)
 			
 			> .right
 				flex         1
-				margin-right .5 * ($SizeBlock - $FZ_Icon)
+				margin-right calc(.5 * (var(--SizeBlock) - var(--FZ_Icon)))
 				
 				> .label
-					height         $InputLabelHeight
-					margin-top     4 * $WidthBorder
-					font-size      $FZ_Caption
+					height         var(--InputLabelHeight)
+					margin-top     calc(4 * var(--WidthBorder))
+					font-size      var(--FZ_Caption)
 					text-transform uppercase
-					font-weight    $FW_Bold
-					line-height    $InputLabelHeight
-					color          $ColorBlackTextTri
+					font-weight    var(--FW_Bold)
+					line-height    var(--InputLabelHeight)
+					color          var(--ColorTextTri)
 					letter-spacing .25px
 				
 				> .placeholder
-					height            $InputLineHeight
-					line-height       $InputLineHeight
-					color             $ColorBlackTextTri
-					transition        padding-left $TimeTrans, background-image $TimeTrans
+					height            var(--InputLineHeight)
+					line-height       var(--InputLineHeight)
+					color             var(--ColorTextTri)
+					transition        padding-left var(--TimeTrans), background-image var(--TimeTrans)
 					// gradient fade out text
 					background-color        transparent
-					background-image        linear-gradient(to right, $ColorBlackTextTri, transparent 1.25*$SizeBlock)
+					background-image        linear-gradient(to right, var(--ColorTextTri), transparent calc(1.25*var(--SizeBlock)))
 					background-size         100%
 					-webkit-background-clip text
 					-moz-background-clip    text
@@ -138,9 +141,9 @@
 					-moz-text-fill-color    transparent
 				
 				> .line
-					height           $WidthBorder
-					margin-bottom    $InputLabelHeight - $WidthBorder
-					border-radius    $Radius
-					background-color $ColorBorder
-					transition       background-color $TimeTrans
+					height           var(--WidthBorder)
+					margin-bottom    calc(var(--InputLabelHeight) - var(--WidthBorder))
+					border-radius    var(--Radius)
+					background-color var(--ColorBorder)
+					transition       background-color var(--TimeTrans)
 </style>
