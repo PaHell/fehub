@@ -43,10 +43,10 @@
 
 	let gridElements = {
 		heading: {
-			type: 'text',
-			text: import.meta.env.VITE_APP_NAME,
-			icon: 'image',
-			level: 'heading'
+			type: 'image',
+			src: '/logo.png',
+			align: 'left',
+			class: 'logo', 
 		},
 		language: {
 			type: 'select',

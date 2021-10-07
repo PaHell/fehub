@@ -9,12 +9,13 @@
 	export let props;
 	const defaults = {
 		src: '',
+		align: 'center'
 	};
 	props = { ...defaults, ...props };
 </script>
 
 <template lang="pug">
-	.cell-img.unstyled
+	.cell-img.unstyled(class="{`align-${props.align} ${props.class}`}")
 		+if('props.src.length')
 			img(src="{props.src}")
 			+else
@@ -31,9 +32,16 @@
 		justify-content  center
 		width            100%
 		height           100%
+
+		&.align-left
+			justify-content flex-start
+
+		&.logo
+			> img
+				padding var(--Spacing) 0
 		
 		> img
-			min-width 100%
+			height 100%
 
 		> .empty
 			display          flex

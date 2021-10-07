@@ -3,7 +3,7 @@ import { browser } from '$app/env';
 import { setHeader } from '$src/http';
 
 const THEME_DARK = {
-	DEFAULT: false,
+	DEFAULT: true,
 	CLASS: 'theme_dark',
 	COOKIE: 'dark'
 };
