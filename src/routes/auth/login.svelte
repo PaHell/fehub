@@ -8,11 +8,15 @@
 	function performLogin() {
 		login(gridElements.inputUsername.value, gridElements.inputPassword.value)
 			.then(data => {
-				console.warn('login', data);
+				gridElements.textStatus.status = 'success';
+				gridElements.textStatus.icon = 'done';
+				gridElements.textStatus.text = 'auth.login.success';
 				goto('/');
 			})
 			.catch(err => {
-				console.warn('login', err);
+				gridElements.textStatus.status = 'error';
+				gridElements.textStatus.icon = 'error';
+				gridElements.textStatus.text = err;
 			});
 	}
 
@@ -76,6 +80,13 @@
 			text: 'auth.register.action',
 			value: 'register'
 		},
+		textStatus: {
+			type: 'text',
+			text: '',
+			icon: '',
+			align: 'right',
+			status: ''
+		},
 	};
 	// prettier-ignore
 	let gridLayout = [
@@ -84,7 +95,7 @@
 		[ 1, 'textHeading'  , 'textHeading'   ],
 		[ 1, 'inputUsername', 'inputUsername' ],
 		[ 1, 'inputPassword', 'inputPassword' ],
-		[ 1, '.'            , 'buttonLogin'   ],
+		[ 1, 'textStatus'   , 'buttonLogin'   ],
 		[ 1, 'textRegister' , 'buttonRegister'],
 	];
 </script>

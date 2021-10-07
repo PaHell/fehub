@@ -165,6 +165,9 @@
 						height        calc(var(--FZ_IconSmall) - 6 * var(--WidthBorder))
 						margin        calc(2 * var(--WidthBorder))
 						border-radius 100%
+
+				> .text
+					ellipsis()
 				
 				&.selected					
 					> .control

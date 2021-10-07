@@ -9,9 +9,14 @@
 	import input from '$lib/grid/input.svelte';
 	import select from '$lib/grid/select.svelte';
 	import text from '$lib/grid/text.svelte';
+	import image from '$lib/grid/image.svelte';
 	const elementTypes = {
 		list: {
 			component: list
+		},
+		image: {
+			component: image,
+			skip: true,
 		},
 		dropdown: {
 			component: dropdown
@@ -23,7 +28,8 @@
 			component: checkbox
 		},
 		input: {
-			component: input
+			component: input,
+			keepFocus: true,
 		},
 		select: {
 			component: select
@@ -256,8 +262,11 @@
 			39: 'right',
 			40: 'down'
 		};
-		// remove mouse :focus from click
-		if (event.keyCode === 13) document.activeElement.blur();
+		// remove element:focus (from mouseclicks)
+		// unless keepFocus = true
+		if (event.keyCode === 13
+			&& !elementTypes[data[activeElemID].type].keepFocus)
+			document.activeElement.blur();
 		// handle comp events
 		const compResponse = data[activeElemID].ref.handleKeydown?.(event);
 		if (!compResponse) {
@@ -321,19 +330,22 @@
 				overflow         hidden
 				position         relative
 				z-index          12
-				background-color var(--ColorBG)
-				border-radius    var(--Radius)
-				box-shadow       var(--Shadow)
-				transition       background-color var(--TimeTrans), box-shadow var(--TimeTrans)
-				
-				&.active
-					z-index          18
-					background-color var(--ColorBGLight)
-					box-shadow       var(--ShadowRaised)
-			
-				&[disabled]
-					border           var(--WidthBorder) dashed var(--ColorBorder)
+
+				&:not(.unstyled)
 					border-radius    var(--Radius)
-					box-shadow       none
 					background-color var(--ColorBG)
+					box-shadow       var(--Shadow)
+					transition       background-color var(--TimeTrans), box-shadow var(--TimeTrans)
+					backdrop-filter  blur(var(--AcrylicBlur))
+				
+					&.active
+						z-index          18
+						background-color var(--ColorBGLight)
+						box-shadow       var(--ShadowRaised)
+			
+					&[disabled]
+						border           var(--WidthBorder) dashed var(--ColorBorder)
+						border-radius    var(--Radius)
+						box-shadow       none
+						background-color var(--ColorBG)
 </style>

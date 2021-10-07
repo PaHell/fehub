@@ -7,17 +7,17 @@
 
 <script>
 	import Grid from '$lib/grid.svelte';
+	import { lastUsername } from '$src/store';
 
 	httpGet('/api/favourites')
 		.then((data) => {
 			gridElements.listFav.items = [];
-			console.log(data);
 			data.forEach(item => {
 				gridElements.listFav.items.push({
 					id: item.ID,
-					img: item.Icon,
+					img: item.Icon || '',
 					name: item.Name,
-					subtitle: item.User
+					subtitle: item.Username
 				});
 			});
 		})
@@ -27,14 +27,13 @@
 
 	httpGet('/api/recent')
 		.then((data) => {
-			console.log('recent', data);
 			gridElements.listRecent.items = [];
 			data.forEach(item => {
 				gridElements.listRecent.items.push({
 					id: item.ID,
-					img: item.Icon,
+					img: item.Icon || '',
 					name: item.Name,
-					subtitle: item.User
+					subtitle: item.Username
 				});
 			});
 		})
@@ -65,7 +64,7 @@
 			type: 'dropdown',
 			label: 'index.account.label',
 			icon: 'person',
-			text: 'index.account.text',
+			text: $lastUsername,
 			options: [
 				{
 					text: 'index.account.profile',
@@ -106,7 +105,9 @@
 			type: 'button',
 			icon: 'navigate_next',
 			text: 'search.action',
-			value: '/search'
+			value: () => {
+				goto(`/search/${gridElements.inputSearch.value || '%20'}`);
+			}
 		},
 		listFav: {
 			type: 'list',

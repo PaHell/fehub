@@ -73,7 +73,7 @@ const config = {
 			plugins: [autoprefixer()]
 		},
 		stylus: {
-			//prependData: `@require 'src/styles/variables'`
+			prependData: `@require 'src/styles/mixins'`
 		}
 	})
 };

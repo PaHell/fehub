@@ -87,7 +87,7 @@
 </script>
 
 <template lang="pug">
-	.cell-list(class:active)
+	.cell-list.unstyled(class:active)
 		header
 			+if('props.icon')
 				Icon { props.icon }
@@ -100,9 +100,12 @@
 						class:focused="{focused === index}",
 						on:click|preventDefault!="{() => onItemClick(index)}",)
 						.img
-							img(src="{item.img}")
-						p.text.bold {item.name}
-						p.text.caption {item.subtitle}
+							+if('item.img')
+								img(src="{item.img}")
+								+else
+									Icon image_not_supported
+						p.text.ta-center.bold {item.name}
+						p.text.ta-center.caption {item.subtitle}
 				+else()
 					.empty
 						Icon {props.empty.icon}
@@ -114,10 +117,6 @@
 	.cell-list
 		display          flex
 		flex-direction   column
-		overflow         visible     !important
-		background-color transparent !important
-		box-shadow       none        !important
-		border-radius    0           !important
 		border-top       var(--WidthBorder) solid var(--ColorBorder)
 		
 		> header
@@ -154,6 +153,7 @@
 				background-color var(--ColorBG)
 				box-shadow       var(--Shadow)
 				border-radius    var(--Radius)
+				backdrop-filter  blur(var(--AcrylicBlur))
 				transition       background-color var(--TimeTrans), box-shadow var(--TimeTrans)
 
 				> .img
@@ -170,8 +170,16 @@
 					> img
 						height 100%
 
-				> .text:not(:last-child)
-					margin-bottom var(--SpacingText)
+					> .icon
+						color var(--ColorIconTri)
+
+				> .text
+					width   100%
+					padding 0 var(--Spacing)
+					ellipsis()
+				
+					&:not(:last-child)
+						margin-bottom var(--SpacingText)
 
 			> .empty
 				flex            1
@@ -186,6 +194,7 @@
 				> .text
 					color var(--ColorTextTri)
 					text-align left
+					ellipsis()
 
 		&.active > .items > button.focused
 			background-color var(--ColorBGLight)

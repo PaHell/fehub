@@ -10,6 +10,7 @@
 <script>
 	export let active;
 	export let props;
+	export let specs;
 	const defaults = {
 		icon: '',
 		label: 'Dropdown',
@@ -91,18 +92,8 @@
 		
 	.cell-dropdown
 		height           var(--SizeBlock)
-		box-shadow       var(--Shadow)
-		background-color var(--ColorBG)
-		border-radius    var(--Radius)
 		transition       height var(--TimeTrans), box-shadow var(--TimeTrans), background-color var(--TimeTrans) !important
 		will-change      height
-		
-		> #container-cursor
-			width 100%
-			> #cursor
-				width  50%
-				height var(--SizeBlock)
-				margin-left 25%
 		
 		> button
 			display         flex
@@ -111,7 +102,8 @@
 			height          var(--SizeBlock)
 			
 			> .icon
-				width var(--SizeBlock)
+				flex-shrink 0
+				width       var(--SizeBlock)
 				
 				&:last-child
 					color            var(--ColorIconTri)
@@ -119,7 +111,8 @@
 					transition       color var(--TimeTrans), transform var(--TimeTrans)
 				
 			> div
-				flex 1
+				flex     1
+				overflow hidden
 				
 				> .text
 					ellipsis()
@@ -131,9 +124,6 @@
 						color          var(--ColorTextTri)
 						letter-spacing .25px
 			
-			&.hovered > .icon:last-child
-				color var(--ColorAccentIcon) !important
-		
 		> .options
 			flex 1
 			
@@ -153,11 +143,8 @@
 					> .icon
 						color var(--ColorAccentIcon)
 						
-		&.active > button > .icon
-			&:first-child
-				color var(--ColorAccentIcon)
-			&:last-child
-				color var(--ColorIconPri)
+		&.active > button.hovered > .icon
+			color var(--ColorAccentIcon)
 							
 		&.expanded
 			> button

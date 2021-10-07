@@ -1,18 +1,41 @@
 <script>
+	import { onMount } from 'svelte';
 	import { goto } from '$app/navigation';
 	import { post as httpPost } from '$src/http';
 	import Grid from '$lib/grid.svelte';
+
+	let inputFile;
 
 	function create() {
 		httpPost('/set/project', {
 			Name: gridElements.inputName.value,
 			Url: gridElements.inputUrl.value,
 			Description: gridElements.inputDesc.value,
-			Icon: 'base64',
+			Icon: gridElements.image.src
 		})
-		.then(data => { goto(`/project/${data.id}`); })
-		.catch(err => { console.log('could not create proj.', err); });
+			.then((data) => {
+				goto(`/project/${data.id}`);
+			})
+			.catch((err) => {
+				console.log('could not create proj.', err);
+			});
 	}
+
+	onMount(() => {
+		inputFile.addEventListener('change', () => {
+			console.log('CHANGE FILE INPUT');
+			const data = inputFile.files[0];
+			console.log({ data });
+			const reader = new FileReader();
+			reader.readAsDataURL(data);
+			reader.onload = function () {
+				gridElements.image.src = reader.result;
+			};
+			reader.onerror = function (error) {
+				console.log({error});
+			};
+		});
+	});
 
 	let gridElements = {
 		textApp: {
@@ -23,16 +46,12 @@
 		},
 		buttonBack: {
 			type: 'button',
-			icon: 'arrow_back',
-			text: 'general.back',
-			value: '/',
+			value: '<',
 			autofocus: true
 		},
 		image: {
-			type: 'text',
-			text: 'Image',
-			icon: 'image',
-			level: 'headline'
+			type: 'image',
+			src: ''
 		},
 		inputName: {
 			type: 'input',
@@ -41,7 +60,7 @@
 			label: 'project.new.name.label',
 			placeholder: 'project.new.name.placeholder',
 			icon: 'source',
-			autofocus: true,
+			autofocus: true
 		},
 		inputUrl: {
 			type: 'input',
@@ -49,7 +68,7 @@
 			name: 'url',
 			label: 'project.new.url.label',
 			placeholder: 'project.new.url.placeholder',
-			icon: 'public',
+			icon: 'public'
 		},
 		inputDesc: {
 			type: 'input',
@@ -57,7 +76,7 @@
 			name: 'desc',
 			label: 'project.new.desc.label',
 			placeholder: 'project.new.desc.placeholder',
-			icon: 'description',
+			icon: 'description'
 		},
 		selectState: {
 			type: 'select',
@@ -66,22 +85,24 @@
 			icon: 'model_training',
 			selected: 'womm',
 			options: {
-				'wip': 'project.state.wip',
-				'womm': 'project.state.womm',
+				wip: 'project.state.wip',
+				womm: 'project.state.womm'
 			}
 		},
 		buttonUpload: {
 			type: 'button',
 			icon: 'cloud_upload',
 			text: 'project.new.upload',
-			value: () => {}
+			value: () => {
+				inputFile.click();
+			}
 		},
 		buttonSave: {
 			type: 'button',
 			icon: 'save',
 			text: 'project.new.save',
 			value: create
-		},
+		}
 	};
 	// 12:9
 	// prettier-ignore
@@ -97,5 +118,9 @@
 </script>
 
 <template lang="pug">
+	input.hidden(
+		type="file",
+		bind:this="{inputFile}",
+		accept="image/*")
 	Grid(bind:elements="{gridElements}", layout="{gridLayout}")
 </template>

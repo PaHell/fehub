@@ -8,18 +8,21 @@
 <script>
 	export let active;
 	export let props;
+	export let specs;
 	const defaults = {
 		text: false,
 		icon: false,
 		level: 'default',
 		align: 'left',
+		vAlign: 'center',
+		status: '',
 		info: false
 	};
 	props = { ...defaults, ...props };
 </script>
 
 <template lang="pug">
-	.cell-text(class="{`level-${props.level} align-${props.align}`}")
+	.cell-text.unstyled(class="{`level-${props.level} align-${props.align} v-align-${props.vAlign} status-${props.status}`}")
 		+if('props.icon')
 			Icon {props.icon}
 		p.text(class="{props.level}") {$_(props.text)}
@@ -39,14 +42,6 @@
 		width            100%
 		height           100%
 		padding          0 calc(.5 * (var(--SizeBlock) - var(--FZ_Icon)))
-		background-color transparent !important
-		box-shadow       none !important
-		
-		&.align-right
-			justify-content flex-end
-
-		&.align-center
-			justify-content center
 		
 		> .icon
 			width  var(--FZ_Icon)
@@ -119,5 +114,36 @@
 				color     var(--ColorIconTri)
 			> .text
 				color var(--ColorTextTri)
+
+		&.align-right
+			flex-direction row-reverse
+			> .icon:first-child
+				margin 0 0 0 var(--SpacingText) !important
+			> .text
+				margin-left 0
+
+		&.align-center
+			justify-content center
+
+		&.v-align-top
+			align-items flex-start
+
+			> .text
+				margin-top calc((var(--SizeBlock) - var(--FZ_Icon) + var(--SpacingText)) / 2)
+
+		&.status-error
+			> .icon,
+			> .text:first-child
+				color var(--ColorError)
+
+		&.status-success
+			> .icon,
+			> .text:first-child
+				color var(--ColorSuccess)
+
+	body.theme_dark .cell-text.level-headline
+		background-image none
+		border-radius    0
+		box-shadow       inset 0 var(--WidthBorder) 0 var(--ColorBorder) !important
 
 </style>

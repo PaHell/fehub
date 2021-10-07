@@ -11,7 +11,8 @@
     },
     "save": "Save",
     "back": "Back",
-    "back_home": "Back Home"
+    "back_home": "Back Home",
+    "no_image": "No Image"
   },
   "index": {
     "title": "FEHub",
@@ -46,12 +47,14 @@
     "login": {
       "heading": "Please login to continue",
       "action": "Log In",
-      "text": "Already registered?"
+      "text": "Already registered?",
+      "success": "Received Token"
     },
     "register": {
       "heading": "Create a new Account",
       "action": "Sign Up",
-      "text": "New here?"
+      "text": "New here?",
+      "success": "Account Created. Logging in..."
     }
   },
   "profile": {
@@ -82,6 +85,7 @@
       "heading": "Create new Project",
       "discard": "Discard",
       "save": "Save & Publish",
+      "upload": "Upload Image",
       "name": {
         "label": "Project Title",
         "placeholder": "PolyChat"

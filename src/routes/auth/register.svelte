@@ -7,18 +7,24 @@
 
 	function perfromRegister() {
 		const username = gridElements.inputUsername.value,
-		      password = gridElements.inputPassword.value;
-		register(username, password).then((response) => {
-			console.warn('registered', response);
-			login(username, password).then((response) => {
-				console.warn('logged in', response);
-				goto('/');
-			}).catch(err => {
-				console.warn('login error', err);
-			});;
-		}).catch(err => {
-			console.warn('register error', err);
-		});;
+			password = gridElements.inputPassword.value;
+		register(username, password)
+			.then((response) => {
+				gridElements.textStatus.status = 'success';
+				gridElements.textStatus.icon = 'done';
+				gridElements.textStatus.text = 'auth.register.success';
+				login(username, password)
+					.then((response) => {
+						console.warn('logged in', response);
+						goto('/');
+					})
+					.catch((err) => {});
+			})
+			.catch((err) => {
+				gridElements.textStatus.status = 'error';
+				gridElements.textStatus.icon = 'error';
+				gridElements.textStatus.text = err;
+			});
 	}
 
 	let gridElements = {
@@ -54,7 +60,7 @@
 			placeholder: 'auth.username.placeholder',
 			icon: 'face',
 			autofocus: true,
-			onChange: val => lastUsername.set(val)
+			onChange: (val) => lastUsername.set(val)
 		},
 		inputPassword: {
 			type: 'input',
@@ -68,7 +74,7 @@
 			type: 'button',
 			icon: 'login',
 			text: 'auth.login.action',
-			value: 'login',
+			value: 'login'
 		},
 		textLogin: {
 			type: 'text',
@@ -81,6 +87,13 @@
 			text: 'auth.register.action',
 			value: perfromRegister
 		},
+		textStatus: {
+			type: 'text',
+			text: '',
+			icon: '',
+			align: 'right',
+			status: ''
+		},
 	};
 	// prettier-ignore
 	let gridLayout = [
@@ -89,10 +102,9 @@
 		[ 1, 'textHeading'  , 'textHeading'   ],
 		[ 1, 'inputUsername', 'inputUsername' ],
 		[ 1, 'inputPassword', 'inputPassword' ],
-		[ 1, '.'            , 'buttonRegister'],
+		[ 1, 'textStatus'   , 'buttonRegister'],
 		[ 1, 'textLogin'    , 'buttonLogin'   ],
 	];
-
 </script>
 
 <template lang="pug">

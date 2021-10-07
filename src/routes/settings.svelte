@@ -17,10 +17,8 @@
 		},
 		buttonBack: {
 			type: 'button',
-			icon: 'arrow_back',
-			text: 'general.back',
-			value: '/',
-			autofocus: true
+			value: '<',
+			autofocus: true,
 		},
 		darkMode: {
 			type: 'checkbox',
@@ -30,6 +28,12 @@
 			value: $themeDark,
 			onChange: dark => { themeDark.set(dark); }
 		},
+		textArch: {
+			type: 'text',
+			text: 'I use Arch btw.',
+			level: 'caption',
+			align: 'right'
+		},
 	};
 	// 12:9
 	// prettier-ignore
@@ -38,8 +42,8 @@
 		[ 1, 'buttonBack', 'textApp'  , 'textApp'  , 'textApp'  , 'textApp'  , 'textApp'  ],
 		[ 1, 'heading'   , 'heading'  , 'heading'  , 'heading'  , 'heading'  , 'heading'  ],
 		[ 1, 'darkMode'  , 'darkMode' , 'darkMode' , '.'        , '.'        , '.'        ],
-		[ 1, '.'         , '.'        , '.'        , '.'        , '.'        , '.'        ],
 		[ 5, '.'         , '.'        , '.'        , '.'        , '.'        , '.'        ],
+		[ 1, '.'         , '.'        , '.'        , '.'        , '.'        , 'textArch' ],
 	];
 </script>
 

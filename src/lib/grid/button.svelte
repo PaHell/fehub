@@ -9,6 +9,7 @@
 <script>
 	export let active;
 	export let props;
+	export let specs;
 	const defaults = {
 		icon: false,
 		text: false,
@@ -22,13 +23,17 @@
 	function detectValueType(val) {
 		if (typeof val === 'string' || val instanceof String) {
 			if (val.substring(0, 4) === 'http') return 'url';
+			else if (val === '<') return 'back';
 			return 'link';
 		}
 		return 'func';
 	}
 
 	const type = detectValueType(props.value);
-	if (type === 'url' && !props.icon) props.icon = 'public';
+	if (!props.icon) {
+		if (type === 'url') props.icon = 'public';
+		else if (type === 'back') props.icon = 'arrow_back';
+	}
 
 	export function onClick(event) {
 		switch (type) {
@@ -37,6 +42,9 @@
 				break;
 			case 'url':
 				window.open(props.value, '_blank').focus();
+				break;
+			case 'back':
+				window.history.back();
 				break;
 			case 'func':
 				props.value(event);

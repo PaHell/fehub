@@ -6,14 +6,16 @@
 
 <script>
 	import { onMount } from 'svelte';
-	import { get as httpGet } from '$src/http';
+	import { goto } from '$app/navigation';
+	import { get as httpGet, post as httpPost } from '$src/http';
 	import Grid from '$lib/grid.svelte';
 
 	export let id;
 
 	httpGet(`/api/project/${id}`)
 		.then((data) => {
-			console.log(data);
+		console.log({data});
+			gridElements.image.src = data.Icon || '';
 			gridElements.textName.text = data.Name;
 			gridElements.textUrl.text = data.Url;
 			gridElements.textDesc.text = data.Description;
@@ -23,6 +25,31 @@
 		.catch((err) => {
 			console.log('could not load proj.', err);
 		});
+		
+	httpGet(`/api/favourites`)
+		.then((data) => {
+			data.some((item) => {
+				const isFav = item.ID === parseInt(id);
+				gridElements.toggleFav.value = isFav;
+				return isFav;
+			});
+		})
+		.catch((err) => {
+			console.log('could not load favs', err);
+		});
+
+	function toggleFavorite(bool) {
+		httpPost(
+			bool ? '/set/favourite' : '/remove/favourite',
+			{ Project: id }
+		)
+			.then((data) => {
+				console.log(data);
+			})
+			.catch((err) => {
+				console.log('could not toggle fav', err);
+			});
+	}
 
 	let gridElements = {
 		textApp: {
@@ -39,17 +66,16 @@
 		},
 		buttonBack: {
 			type: 'button',
-			icon: 'arrow_back',
-			text: 'general.back',
-			value: '/',
-			autofocus: true
+			value: '<',
+			autofocus: true,
 		},
 		toggleFav: {
 			type: 'checkbox',
 			variant: 'toggle',
 			icon: 'favorite_outline',
 			text: 'project.view.favorite',
-			value: false
+			value: false,
+			onChange: (bool) => { toggleFavorite(bool); }
 		},
 		buttonUrl: {
 			type: 'button',
@@ -58,10 +84,8 @@
 			value: '/'
 		},
 		image: {
-			type: 'text',
-			text: 'Image',
-			icon: 'image',
-			level: 'headline'
+			type: 'image',
+			src: ''
 		},
 		textName: {
 			type: 'text',
@@ -76,7 +100,8 @@
 		textDesc: {
 			type: 'text',
 			text: '',
-			icon: 'description'
+			icon: 'description',
+			vAlign: 'top',
 		},
 		textState: {
 			type: 'text',

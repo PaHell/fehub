@@ -11,9 +11,9 @@ body
     --Grey500 #9E9E9E
     --Grey600 #757575
     --Grey700 #616161
-    --Grey800 #424242
+    --Grey800 #404040
     --Grey850 #303030
-    --Grey900 #212121
+    --Grey900 #202020
     --Grey950 #000000
     // Colors: Palette
     --Red-Light         #ff867c
@@ -79,13 +79,13 @@ body
     --OpacitySec .5
     --OpacityTri .35
     // Colors: Text
-    --ColorTextPri var(--Grey900)
-    --ColorTextSec var(--Grey700)
-    --ColorTextTri var(--Grey500)
+    --ColorTextPri rgba(black, .9)
+    --ColorTextSec rgba(black, .7)
+    --ColorTextTri rgba(black, .5)
     // Colors: Icons
-    --ColorIconPri      var(--Grey600)
-    --ColorIconSec      var(--Grey500)
-    --ColorIconTri      var(--Grey400)
+    --ColorIconPri rgba(black, .8)
+    --ColorIconSec rgba(black, .6)
+    --ColorIconTri rgba(black, .4)
     // FONTS
     // Font Family
     --FontFamily     'Titillium Web', sans-serif
@@ -114,19 +114,21 @@ body
     --ColorAccent            var(--Blue-Medium)
     --ColorAccentIcon        var(--Blue-Dark)
     --ColorAccentText        var(--Blue-Dark)
-    --ColorTextOnAccent      var(--ColorGrey000)
-    --ColorIconOnAccent      var(--ColorGrey100)
+    --ColorTextOnAccent      var(--Grey000)
+    --ColorIconOnAccent      var(--Grey100)
     // Background Shading
-    --ColorBGLight var(--Grey000)
-    --ColorBG      var(--Grey200)
-    --ColorBGDark  var(--Grey300)
+    --ColorBGLight rgba(white, .7)
+    --ColorBG      rgba(white, .5)
+    --ColorBGDark  rgba(white, .3)
+    // Acrylic
+    --AcrylicBlur 8px
     // Dots
     --ColorDot       var(--Grey400)
     --ColorDotDark   var(--Grey600)
     --ColorDotActive var(--ColorAccentIcon)
     // Shadows
-    --Shadow       2px 2px 4px 2px var(--ColorBGDark), -2px -2px 4px 2px var(--ColorBGLight)
-    --ShadowRaised 0px 0px 24px 0px var(--Grey400), 0px 0px 0px 0px var(--ColorBGLight)
+    --Shadow       inset 0 0 0 2px rgba(white, .1)
+    --ShadowRaised inset 0 0 0 2px rgba(white, .2)
     --ShadowText   var(--Shadow)
     // Radius
     --Radius      12px
@@ -134,7 +136,7 @@ body
     --RadiusSmall 6px
     // Borders & Dividers
     --WidthBorder 2px
-    --ColorBorder var(--Grey300)
+    --ColorBorder rgba(black, .2)
     // ANIMATIONS
     // Transitions
     --TimeTrans     .2s
@@ -178,12 +180,12 @@ body.theme_dark
     --OpacityTri .25
     // Colors: Text
     --ColorTextPri var(--Grey000)
-    --ColorTextSec var(--Grey200)
-    --ColorTextTri var(--Grey400)
+    --ColorTextSec var(--Grey400)
+    --ColorTextTri var(--Grey600)
     // Colors: Icons
-    --ColorIconPri      var(--Grey100)
-    --ColorIconSec      var(--Grey300)
-    --ColorIconTri      var(--Grey500)
+    --ColorIconPri      var(--Grey300)
+    --ColorIconSec      var(--Grey500)
+    --ColorIconTri      var(--Grey700)
     // Accent
     --ColorAccent            var(--Blue-Light)
     --ColorAccentIcon        var(--Blue-Medium)
@@ -191,14 +193,18 @@ body.theme_dark
     --ColorTextOnAccent      var(--Grey000)
     --ColorIconOnAccent      var(--Grey100)
     // Background Shading
-    --ColorBGLight var(--Grey800)
-    --ColorBG      var(--Grey850)
-    --ColorBGDark  var(--Grey900)
+    --ColorBGLight rgba(black, .4) //var(--Grey800)
+    --ColorBG      rgba(black, .5) //var(--Grey850)
+    --ColorBGDark  rgba(black, .6) //var(--Grey900)
     // Dots
     --ColorDot       var(--Grey400)
     --ColorDotDark   var(--Grey600)
+    // Font Weight
+    --FW_Light 600
+    --FW_Bold  600
+    --FW_Mono  400
     // Shadows
-    --Shadow       inset 0 0 0 2px var(--ColorBGDark)
-    --ShadowRaised inset 0 0 0 2px var(--ColorBGDark)
+    --Shadow       inset 0 0 0 2px rgba(white, .1)
+    --ShadowRaised inset 0 0 0 2px rgba(white, .2)
     // Border
-    --ColorBorder var(--Grey900)
+    --ColorBorder rgba(white, .1)

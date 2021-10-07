@@ -11,7 +11,7 @@
 					id: item.ID,
 					img: item.Icon,
 					name: item.Name,
-					subtitle: item.User
+					subtitle: item.Username
 				});
 			});
 		})
@@ -21,7 +21,7 @@
 
 	httpGet('/api/user')
 		.then(data => {
-			//gridElements.image.text = data.Picture;
+			gridElements.image.src = data.Picture || '';
 			gridElements.inputName.value = data.Username;
 			gridElements.inputUrl.value = data.Homepage,
 			gridElements.inputDesc.value = data.Biography,
@@ -40,10 +40,8 @@
 		},
 		buttonBack: {
 			type: 'button',
-			icon: 'arrow_back',
-			text: 'general.back_home',
-			value: '/',
-			autofocus: true
+			value: '<',
+			autofocus: true,
 		},
 		buttonNew: {
 			type: 'button',
@@ -107,10 +105,8 @@
 			text: 'general.save',
 		},
 		image: {
-			type: 'text',
-			text: 'Image',
-			icon: 'image',
-			level: 'headline'
+			type: 'image',
+			src: '',
 		}
 	};
 	// 12:9

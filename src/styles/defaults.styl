@@ -50,9 +50,15 @@ html
 				//
 
 body
-	bg-texture()
+	//bg-texture()
 	caret-color var(--ColorAccent)
 	transition-timing-function linear
+	background-image    url("/wallpaper-light.jpg")
+	background-size     cover
+	background-position top center
+
+	&.theme_dark
+		background-image url("/wallpaper-dark.jpg")
 
 .hidden
 	display none
@@ -64,6 +70,7 @@ textarea,
 select,
 button
 	font-family var(--FontFamily)
+	font-weight var(--FW_Light)
 
 // Interaction
 a,
