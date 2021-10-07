@@ -3,46 +3,109 @@
 		"language": "Schbrocha",
 		"select": {
 			"none": "Koi Auswahl"
-		}
-	},
-	"index": {
-		"title": "Zeid mit Schach vrblembera",
-		"computer": {
-			"heading": "I gega dr Kombjuudr",
-			"info": "Bliddzgscheidr Abberad uff Zagg (Stockfish 12)",
-			"first_move": {
-				"label": "Erschdes Zügle",
-				"random": "Zufällich",
-				"you": "nadierlich I",
-				"computer": "Kombjuudr"
-			},
-			"difficulty": {
-				"label": "Schwierigkeid",
-				"easy": "Saubleed",
-				"medium": "Oifach",
-				"hard": "Nedd leichd",
-				"impossible": "Omeeglich"
-			},
-			"start_game": "Afanga"
 		},
-		"player": {
-			"heading": "I geg' a greeßrs Rindvieh",
-			"info": "Direkdr Drahd (P2P/WebRTC)",
-			"lobby_code": {
-				"label": "Schlissl",
-				"placeholder": "brägele"
-			},
-			"nickname": {
-				"label": "Schbiddznoma",
-				"placeholder": "Käpsale"
-			},
-			"connect": "Verdrahda",
-			"host": "Hocketse macha"
+		"save": "Schbeichra",
+		"back": "Zrick",
+		"back_home": "Hoim ganga"
+	  },
+	  "index": {
+		"title": "FEHub",
+		"account": {
+		  "label": "s'Brofil",
+		  "text": "Noma",
+		  "profile": "Mei Brofil",
+		  "settings": "Zom Werkla",
+		  "logout": "Abzischa"
 		},
-		"training": {
-			"heading": "Ieba",
-			"list_all": "Älle Iebonge",
-			"continue": "Fordsedze"
+		"search": "Gugga was d'Leid machat",
+		"favorites": {
+		  "heading": "s'Beschde",
+		  "empty": "s'gibt nix gscheits odr hasch no nix gfunda",
+		  "more": "Älläs oschaua"
+		},
+		"recent": {
+		  "heading": "Des hasch gesäa",
+		  "empty": "Gang, ond schau dr erschd ebbes a",
+		  "more": "Älläs ogschaute oschaua"
 		}
+	  },
+	  "auth": {
+		"username": {
+		  "label": "Schbiddznoma",
+		  "placeholder": "schbätzle.soß"
+		},
+		"password": {
+		  "label": "Koodwärdle",
+		  "placeholder": "$koodwärdle$"
+		},
+		"login": {
+		  "heading": "Wer bischn au du?",
+		  "action": "Des beh I",
+		  "text": "Kennd mr di scho?"
+		},
+		"register": {
+		  "heading": "Erschdmol sich kenna lerna",
+		  "action": "Kenna lerna",
+		  "text": "I beh nui"
+		}
+	  },
+	  "profile": {
+		"username": {
+		  "label": "Schbiddznoma",
+		  "placeholder": "schbätzle.soß"
+		},
+		"homepage": {
+		  "label": "Hompädsch",
+		  "placeholder": "schbätzle.com"
+		},
+		"description": {
+		  "label": "Des beh I",
+		  "placeholder": "I mog schbätzle mit soß..."
+		},
+		"projects": {
+		  "heading": "Mei gschäft",
+		  "new": "Nuis geschäft",
+		  "empty": "Nix gschafft, bloß am gammla"
+		}
+	  },
+	  "project": {
+		"state": {
+		  "wip": "Da schaff I no dro",
+		  "womm": "Bisch oifach z'bled zum inschdallira"
+		},
+		"new": {
+		  "heading": "Ebbes neis macha",
+		  "discard": "Schmeiß weg",
+		  "save": "so mach mer's",
+		  "name": {
+			"label": "Mei gschäft",
+			"placeholder": "Schbara24"
+		  },
+		  "state": "So isch's",
+		  "url": {
+			"label": "Hompädsch",
+			"placeholder": "https://schbätzle.de"
+		  },
+		  "desc": {
+			"label": "Des wird g'macht",
+			"placeholder": "Meh schbara beim faulenza"
+		  }
+		},
+		"view": {
+		  "heading": "Project Showcase",
+		  "favorite": "des isch guad",
+		  "open_url": "Schau mr amol"
+		}
+	  },
+	  "search": {
+		"empty": "Ed amol dr muddr hodds gfunda",
+		"placeholder": "Schbara24, ...",
+		"action": "romgruschdla",
+		"heading": "Gruschd"
+	  },
+	  "settings": {
+		"visual": "fürd Glotzbebbala",
+		"dark_mode": "ed lang schnagga, dungel mode amacha"
+	  }
 	}
-}
+	
