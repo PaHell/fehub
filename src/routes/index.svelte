@@ -11,17 +11,18 @@
 	httpGet('/api/favourites')
 		.then((data) => {
 			gridElements.listFav.items = [];
+			console.log(data);
 			data.forEach(item => {
 				gridElements.listFav.items.push({
 					id: item.ID,
 					img: item.Icon,
 					name: item.Name,
-					owner: item.User
+					subtitle: item.User
 				});
 			});
 		})
 		.catch((err) => {
-			console.log('could not load projects', err);
+			console.log('could not load favorites', err);
 		});
 
 	httpGet('/api/recent')
@@ -33,12 +34,12 @@
 					id: item.ID,
 					img: item.Icon,
 					name: item.Name,
-					owner: item.User
+					subtitle: item.User
 				});
 			});
 		})
 		.catch((err) => {
-			console.log('could not load projects', err);
+			console.log('could not load recent', err);
 		});
 
 	let gridElements = {
@@ -89,7 +90,7 @@
 		headerSearch: {
 			type: 'text',
 			icon: 'data_object',
-			text: 'index.search.heading',
+			text: 'index.search',
 			level: 'heading',
 			align: 'center'
 		},
@@ -97,23 +98,21 @@
 			type: 'input',
 			value: '',
 			name: 'search',
-			placeholder: 'index.search.placeholder',
+			placeholder: 'search.placeholder',
 			icon: 'search',
 			autofocus: true
 		},
 		buttonSearch: {
 			type: 'button',
 			icon: 'navigate_next',
-			text: 'index.search.action',
+			text: 'search.action',
 			value: '/search'
-		},
-		headerFav: {
-			type: 'text',
-			icon: 'favorite',
-			text: 'index.favorites.heading',
 		},
 		listFav: {
 			type: 'list',
+			icon: 'favorite',
+			text: 'index.favorites.heading',
+			items: [],
 			empty: {
 				icon: 'heart_broken',
 				text: 'index.favorites.empty',
@@ -121,22 +120,20 @@
 			more: {
 				icon: 'chevron_right',
 				text: 'index.favorites.more',
-				onClick: () => {
+				callback: () => {
 					console.log('favorites show more');
 				}
 			},
-			items: [],
-			onClick: (item, index) => {
-				console.log(item, index);
+			callback: (item, index) => {
+				console.log(item);
+				goto(`/project/${item.id}`);
 			}
-		},
-		headerRecent: {
-			type: 'text',
-			icon: 'history_edu',
-			text: 'index.recent.heading',
 		},
 		listRecent: {
 			type: 'list',
+			icon: 'history_edu',
+			text: 'index.recent.heading',
+			items: [],
 			empty: {
 				icon: 'history_toggle_off',
 				text: 'index.recent.empty',
@@ -148,9 +145,9 @@
 					console.log('recent show more');
 				}
 			},
-			items: [],
-			onClick: (item, index) => {
-				console.log(item, index);
+			callback: (item, index) => {
+				console.log(item);
+				goto(`/project/${item.id}`);
 			}
 		},
 	};
@@ -161,10 +158,8 @@
 		[ 1, 'heading'     , 'heading'     , 'heading'     , 'language'     , 'account'     , 'account'     ],
 		[ 1, '.'           , 'headerSearch', 'headerSearch', 'headerSearch' , 'headerSearch', '.'           ],
 		[ 1, '.'           , 'inputSearch' , 'inputSearch' , 'buttonSearch' , 'buttonSearch', '.'           ],
-		[ 1, 'headerFav'   , 'headerFav'   , 'headerFav'   , 'headerFav'    , 'headerFav'   , 'headerFav'   ],
-		[ 2, 'listFav'     , 'listFav'     , 'listFav'     , 'listFav'      , 'listFav'     , 'listFav'     ],
-		[ 1, 'headerRecent', 'headerRecent', 'headerRecent', 'headerRecent' , 'headerRecent', 'headerRecent'],
-		[ 2, 'listRecent'  , 'listRecent'  , 'listRecent'  , 'listRecent'   , 'listRecent'  , 'listRecent'  ],
+		[ 3, 'listFav'     , 'listFav'     , 'listFav'     , 'listFav'      , 'listFav'     , 'listFav'     ],
+		[ 3, 'listRecent'  , 'listRecent'  , 'listRecent'  , 'listRecent'   , 'listRecent'  , 'listRecent'  ],
 	];
 </script>
 

@@ -1,105 +1,115 @@
 {
-	"languages": {
-		"en": "English",
-		"de": "Deutsch",
-		"sw": "Schwäbisch"
-	},
-	"general": {
-		"language": "Language",
-		"select": {
-			"none": "None"
-		},
-		"back": "Back",
-		"back_home": "Back Home"
-	},
-	"index": {
-		"title": "FEHub",
-		"account": {
-			"label": "Account",
-			"text": "Username",
-			"profile": "My Profile",
-			"settings": "Settings",
-			"logout": "Log Out"
-		},
-		"search": {
-			"heading": "Search for People or Projects",
-			"placeholder": "PolyChat, ...",
-			"action": "Search"
-		},
-		"favorites": {
-			"heading": "My Favorites",
-			"empty": "You haven't yet marked anything as favorite.",
-			"more": "Show All"
-		},
-		"recent": {
-			"heading": "Recently viewed",
-			"empty": "Go, take a look at some awesome projects!",
-			"more": "Full History"
-		}
-	},
-	"auth": {
-		"username": {
-			"label": "Username",
-			"placeholder": "robert.bosch"
-		},
-		"password": {
-			"label": "Password",
-			"placeholder": "$password$"
-		},
-		"login": {
-			"heading": "Please login to continue",
-			"action": "Log In",
-			"text": "Already registered?"
-		},
-		"register": {
-			"heading": "Create a new Account",
-			"action": "Sign Up",
-			"text": "New here?"
-		}
-	},
-	"profile": {
-		"profile": {
-			"heading": "My Profile"
-		},
-		"projects": {
-			"heading": "My Projects",
-			"new": "New Project"
-		}
-	},
-	"project": {
-		"state": {
-			"wip": "Work in Progress",
-			"womm": "Works on my Machine"
-		},
-		"new": {
-			"heading": "Create new Project",
-			"discard": "Discard",
-			"save": "Save & Publish",
-			"name": {
-				"label": "Project Title",
-				"placeholder": "PolyChat"
-			},
-			"state": "Current State",
-			"url": {
-				"label": "Website",
-				"placeholder": "https://bosch.de"
-			},
-			"desc": {
-				"label": "Description",
-				"placeholder": "Lorem Ipsum dolor sit Amet"
-			}
-		},
-		"view": {
-			"heading": "Project Showcase",
-			"favorite": "Mark as Favorite",
-			"open_url": "Open Page"
-		}
-	},
-	"search": {
-		"empty": "Not even the deepest search could find anything."
-	},
-	"settings": {
-		"visual": "Visual Settings",
-		"dark_mode": "Enable Dark Mode"
-	}
+  "languages": {
+    "en": "English",
+    "de": "Deutsch",
+    "sw": "Schwäbisch"
+  },
+  "general": {
+    "language": "Language",
+    "select": {
+      "none": "None"
+    },
+    "save": "Save",
+    "back": "Back",
+    "back_home": "Back Home"
+  },
+  "index": {
+    "title": "FEHub",
+    "account": {
+      "label": "Account",
+      "text": "Username",
+      "profile": "My Profile",
+      "settings": "Settings",
+      "logout": "Log Out"
+    },
+    "search": "Search for People or Projects",
+    "favorites": {
+      "heading": "My Favorites",
+      "empty": "You haven't yet marked anything as favorite.",
+      "more": "Show All"
+    },
+    "recent": {
+      "heading": "Recently viewed",
+      "empty": "Go, take a look at some awesome projects!",
+      "more": "Full History"
+    }
+  },
+  "auth": {
+    "username": {
+      "label": "Username",
+      "placeholder": "robert.bosch"
+    },
+    "password": {
+      "label": "Password",
+      "placeholder": "$password$"
+    },
+    "login": {
+      "heading": "Please login to continue",
+      "action": "Log In",
+      "text": "Already registered?"
+    },
+    "register": {
+      "heading": "Create a new Account",
+      "action": "Sign Up",
+      "text": "New here?"
+    }
+  },
+  "profile": {
+    "username": {
+      "label": "Username",
+      "placeholder": "robert.bosch"
+    },
+    "homepage": {
+      "label": "Homepage",
+      "placeholder": "bosch.com"
+    },
+    "description": {
+      "label": "Description",
+      "placeholder": "Lorem ipsum Dolor sit amet."
+    },
+    "projects": {
+      "heading": "My Projects",
+      "new": "New Project",
+      "empty": "You haven't created any projects yet."
+    }
+  },
+  "project": {
+    "state": {
+      "wip": "Work in Progress",
+      "womm": "Works on my Machine"
+    },
+    "new": {
+      "heading": "Create new Project",
+      "discard": "Discard",
+      "save": "Save & Publish",
+      "name": {
+        "label": "Project Title",
+        "placeholder": "PolyChat"
+      },
+      "state": "Current State",
+      "url": {
+        "label": "Website",
+        "placeholder": "https://bosch.de"
+      },
+      "desc": {
+        "label": "Description",
+        "placeholder": "Lorem Ipsum dolor sit Amet"
+      }
+    },
+    "view": {
+      "heading": "Project Showcase",
+      "favorite": "Mark as Favorite",
+      "open_url": "Open Page"
+    }
+  },
+  "search": {
+    "empty": "Not even the deepest search could find anything.",
+    "placeholder": "PolyChat, ...",
+    "action": "Search",
+    "heading": "Results"
+  },
+  "settings": {
+    "visual": "Visual Settings",
+    "dark_mode": "Enable Dark Mode"
+  }
 }

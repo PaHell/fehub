@@ -1,8 +1,6 @@
-<script context="module">
-	import { get as httpGet } from '$src/http';
-</script>
-
 <script>
+	import { goto } from '$app/navigation'; 
+	import { get as httpGet } from '$src/http';
 	import Grid from '$lib/grid.svelte';
 
 	httpGet('/api/projects')
@@ -13,7 +11,7 @@
 					id: item.ID,
 					img: item.Icon,
 					name: item.Name,
-					owner: item.User
+					subtitle: item.User
 				});
 			});
 		})
@@ -23,8 +21,7 @@
 
 	httpGet('/api/user')
 		.then(data => {
-			console.log(data);
-			gridElements.image.text = data.Picture;
+			//gridElements.image.text = data.Picture;
 			gridElements.inputName.value = data.Username;
 			gridElements.inputUrl.value = data.Homepage,
 			gridElements.inputDesc.value = data.Biography,
@@ -43,7 +40,7 @@
 		},
 		buttonBack: {
 			type: 'button',
-			icon: 'home',
+			icon: 'arrow_back',
 			text: 'general.back_home',
 			value: '/',
 			autofocus: true
@@ -54,28 +51,24 @@
 			text: 'profile.projects.new',
 			value: '/project/new'
 		},
-		headerProjects: {
-			type: 'text',
-			icon: 'source',
-			text: 'profile.projects.heading',
-			level: 'headline'
-		},
 		listProjects: {
 			type: 'list',
+			icon: 'source',
+			text: 'profile.projects.heading',
 			empty: {
-				icon: 'star_outline',
-				text: 'index.favorites.empty',
+				icon: 'code_off',
+				text: 'profile.projects.empty',
 			},
 			more: {
 				icon: 'chevron_right',
 				text: 'index.favorites.more',
-				onClick: () => {
+				callback: () => {
 					console.log('favorites show more');
 				}
 			},
 			items: [],
-			onClick: (item, index) => {
-				console.log(item, index);
+			callback: (item, index) => {
+				goto(`/project/${item.id}`);
 			}
 		},
 		textCreated: {
@@ -104,9 +97,9 @@
 			type: 'input',
 			value: '',
 			name: 'search',
-			label: 'profile.homepage.label',
-			placeholder: 'profile.homepage.placeholder',
-			icon: 'public',
+			label: 'profile.description.label',
+			placeholder: 'profile.description.placeholder',
+			icon: 'description',
 		},
 		buttonSave: {
 			type: 'button',
@@ -123,16 +116,16 @@
 	// 12:9
 	// prettier-ignore
 	let gridLayout = [
-        [ 0, 2               , 2               , 4               , 1               , 3             ],
-        [ 1, 'heading'       , 'heading'       , 'heading'       , 'heading'       , 'buttonBack'  ],
-        [ 1, 'image'         , '.'             , 'headerProjects', 'headerProjects', 'buttonNew'   ],
-        [ 1, 'image'         , '.'             , 'listProjects'  , 'listProjects'  , 'listProjects'],
-        [ 1, 'inputName'     , 'inputName'     , 'listProjects'  , 'listProjects'  , 'listProjects'],
-        [ 1, 'inputUrl'      , 'inputUrl'      , 'listProjects'  , 'listProjects'  , 'listProjects'],
-        [ 1, 'inputDesc'     , 'inputDesc'     , 'listProjects'  , 'listProjects'  , 'listProjects'],
-        [ 1, 'buttonSave'    , 'buttonSave'    , 'listProjects'  , 'listProjects'  , 'listProjects'],
-        [ 1, 'textCreated'   , 'textCreated'   , 'listProjects'  , 'listProjects'  , 'listProjects'],
-        [ 1, '.'             , '.'             , 'listProjects'  , 'listProjects'  , 'listProjects'],
+        [ 0, 1               , 1               , 2               , 5             , 3             ],
+        [ 1, 'buttonBack'    , 'heading'       , 'heading'       , 'heading'     , 'buttonNew'   ],
+        [ 1, 'image'         , 'image'         , '.'             , 'listProjects', 'listProjects'],
+        [ 1, 'image'         , 'image'         , '.'             , 'listProjects', 'listProjects'],
+        [ 1, 'inputName'     , 'inputName'     , 'inputName'     , 'listProjects', 'listProjects'],
+        [ 1, 'inputUrl'      , 'inputUrl'      , 'inputUrl'      , 'listProjects', 'listProjects'],
+        [ 1, 'inputDesc'     , 'inputDesc'     , 'inputDesc'     , 'listProjects', 'listProjects'],
+        [ 1, 'buttonSave'    , 'buttonSave'    , 'buttonSave'    , 'listProjects', 'listProjects'],
+        [ 1, 'textCreated'   , 'textCreated'   , 'textCreated'   , 'listProjects', 'listProjects'],
+        [ 1, '.'             , '.'             , '.'             , 'listProjects', 'listProjects'],
 	];
 </script>
 

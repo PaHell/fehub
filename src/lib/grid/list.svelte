@@ -3,121 +3,158 @@
 <script context="module">
 	import { createEventDispatcher } from 'svelte';
 	import { _ } from 'svelte-i18n';
-	import { blockH, blockW, spaceL, elemS } from '$lib/../store.js';
+	import { blockW, blockH, spaceL, border } from '$lib/../store.js';
 	import Icon from '$lib/icon.svelte';
 </script>
 
 <script>
+	// const
+	const ITEM_WIDTH = 2;
+	const ITEM_HEIGHT = 2;
+	// props
 	export let active;
 	export let props;
+	export let specs;
 	const defaults = {
+		icon: '',
+		text: '',
 		items: [],
-		empty: {
-			icon: 'close',
-			text: 'Empty'
-		}
+		callback: () => {},
 	};
 	props = { ...defaults, ...props };
+	// local
 	const dispatch = createEventDispatcher();
-	let hovered = 0;
+	let focused = 0;
 
 	export function onEnter() {
 		updateCursor();
 	}
-
-	export function onLeave() {
-		hovered = 0;
-	}
-
 	export function handleKeydown(event) {
 		let parentStop = false;
+		const width  = specs.w / ITEM_WIDTH;
+		const height = specs.h / ITEM_HEIGHT;
 		switch (event.keyCode) {
 			case 37: // left
-				if (hovered > 0) {
-					hovered--;
+				if (focused % width !== 0) {
+					focused -= 1;
+					parentStop = true;
+				}
+				break;
+			case 38: // up
+				if (focused - width > -1) {
+					focused -= width;
 					parentStop = true;
 				}
 				break;
 			case 39: // right
-				if (hovered < props.items.length) {
-					hovered++;
+				if (focused % width < width - 1 && focused < props.items.length - 1) {
+					focused += 1;
+					parentStop = true;
+				}
+				break;
+			case 40: // down
+				if (focused + width < props.items.length) {
+					focused += width;
 					parentStop = true;
 				}
 				break;
 			case 13: // enter
-				if (hovered < props.items.length) onChildClick(hovered);
-				else onShowMore();
+				onItemClick(focused);
 				parentStop = true;
 				break;
 		}
 		updateCursor();
 		return parentStop;
 	}
-	function updateCursor() {
-		dispatch('cursor', {
-			x: hovered * ($elemS + $spaceL),
-			w: $elemS,
-			h: $elemS
-		});
-	}
-	// Callbacks
 
-	function onChildClick(index) {
-		props.onClick?.(props.items[index], index);
+	function onItemClick(index) {
+		focused = index;
+		props.callback?.(props.items[index], index);
+		updateCursor();
 	}
-	function onShowMore() {
-		props.more?.onClick?.();
+
+	function updateCursor() {
+		const w = specs.w / ITEM_WIDTH;
+		const x = focused % w;
+		const y = Math.trunc(focused / w);
+		dispatch('cursor', {
+			x: x * (ITEM_WIDTH * ($blockW + $spaceL)),
+			y: y * (ITEM_HEIGHT * ($blockH + $spaceL)) + $blockH + $border,
+			w: ITEM_WIDTH * $blockW + $spaceL,
+			h: ITEM_HEIGHT * $blockH + $spaceL
+		});
 	}
 </script>
 
 <template lang="pug">
 	.cell-list(class:active)
-		+if('props.items.length > 0')
-			.items
+		header
+			+if('props.icon')
+				Icon { props.icon }
+			+if('props.text')
+				p.text.headline.bold { $_(props.text) }
+		.items
+			+if('props.items.length')
 				+each('props.items as item, index')
 					button(
-						class:hovered="{hovered === index}",
-						on:click|preventDefault!="{() => onChildClick(index)}")
+						class:focused="{focused === index}",
+						on:click|preventDefault!="{() => onItemClick(index)}",)
 						.img
 							img(src="{item.img}")
 						p.text.bold {item.name}
-						p.text.caption {item.owner}
-				button(
-					class:hovered="{hovered === props.items.length}",
-					on:click|preventDefault!="{() => onShowMore()}")
-					Icon {props.more.icon}
-					p.text.bold {$_(props.more.text)}
-			+else()
-				.empty
-					Icon {props.empty.icon}
-					p.text.headline {$_(props.empty.text)}
+						p.text.caption {item.subtitle}
+				+else()
+					.empty
+						Icon {props.empty.icon}
+						p.text.headline {$_(props.empty.text)}
 </template>
 
 <style lang="stylus" global>
-
+		
 	.cell-list
-		overflow         visible !important
-		height           100%
+		display          flex
+		flex-direction   column
+		overflow         visible     !important
 		background-color transparent !important
-		box-shadow       none !important
-
-		> .items
-			display flex
+		box-shadow       none        !important
+		border-radius    0           !important
+		border-top       var(--WidthBorder) solid var(--ColorBorder)
+		
+		> header
+			display     flex
+			align-items center
 			
+			> .icon
+				margin 0 calc(.5 * (var(--SizeBlock) - var(--FZ_Icon)))
+			> .text
+				ellipsis()
+				flex         1
+				margin-right calc(.5 * (var(--SizeBlock) - var(--FZ_Icon)))
+			
+			> *
+				margin 0
+				&:first-child:last-child
+					flex       1
+					text-align center
+		
+		> .items
+			flex         1
+			display      flex
+			flex-wrap    wrap
+			margin       calc(-.5 * var(--SpacingLarge))
+
 			> button
 				display          flex
 				flex-direction   column
 				justify-content  center
 				align-items      center
-				width            var(--SizeElemS)
-				height           var(--SizeElemS)
+				width            calc(2 * var(--SizeBlock) + var(--SpacingLarge))
+				height           calc(2 * var(--SizeBlock) + var(--SpacingLarge))
+				margin           calc(.5 * var(--SpacingLarge))
 				background-color var(--ColorBG)
 				box-shadow       var(--Shadow)
 				border-radius    var(--Radius)
 				transition       background-color var(--TimeTrans), box-shadow var(--TimeTrans)
-
-				&:not(:last-child)
-					margin-right var(--SpacingLarge)
 
 				> .img
 					overflow         hidden
@@ -136,20 +173,22 @@
 				> .text:not(:last-child)
 					margin-bottom var(--SpacingText)
 
-		&.active > .items > button.hovered
+			> .empty
+				flex            1
+				display         flex
+				align-items     center
+				margin          calc(.5 * var(--SpacingLarge))
+
+				> .icon
+					width var(--SizeBlock)
+					color var(--ColorIconTri)
+
+				> .text
+					color var(--ColorTextTri)
+					text-align left
+
+		&.active > .items > button.focused
 			background-color var(--ColorBGLight)
 			box-shadow       var(--ShadowRaised)
-
-		> .empty
-			display         flex
-			justify-content center
-			align-items     center
-
-			> .icon
-				margin-right var(--SpacingText)
-				color        var(--ColorIconTri)
-
-			> .text
-				color var(--ColorTextTri)
 
 </style>

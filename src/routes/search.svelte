@@ -15,7 +15,7 @@
 					id: item.ID,
 					img: item.Icon,
 					name: item.Name,
-					owner: item.User
+					subtitle: item.User
 				});
 			});
 		})
@@ -32,7 +32,7 @@
 		},
 		buttonBack: {
 			type: 'button',
-			icon: 'home',
+			icon: 'arrow_back',
 			text: 'general.back_home',
 			value: '/',
 			autofocus: true
@@ -41,20 +41,22 @@
 			type: 'input',
 			value: '',
 			name: 'search',
-			placeholder: 'index.search.placeholder',
+			placeholder: 'search.placeholder',
 			icon: 'search',
 			autofocus: true
 		},
 		buttonSearch: {
 			type: 'button',
 			icon: 'navigate_next',
-			text: 'index.search.action',
+			text: 'search.action',
 			value: () => {
 				console.log('searching...');
 			}
 		},
 		listResults: {
 			type: 'list',
+			icon: 'sort',
+			text: 'search.heading',
 			empty: {
 				icon: 'biotech',
 				text: 'search.empty',
@@ -73,10 +75,10 @@
 	// 12:9
 	// prettier-ignore
 	let gridLayout = [
-		[ 0, 4             , 4            , 1             , 3             ],
-		[ 1, 'textApp'     , 'textApp'    , 'textApp'     , 'buttonBack'  ],
-		[ 1, 'inputSearch' , 'inputSearch', 'inputSearch' , 'buttonSearch'],
-		[ 7, 'listResults' , 'listResults', 'listResults' , 'listResults' ],
+        [ 0, 1             , 8             , 3             ],
+        [ 1, 'buttonBack'  , 'textApp'     , 'textApp'     ],
+        [ 1, 'inputSearch' , 'inputSearch' , 'buttonSearch'],
+        [ 7, 'listResults' , 'listResults' , 'listResults' ],
 	];
 </script>
 

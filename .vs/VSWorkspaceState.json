@@ -3,11 +3,12 @@
     "",
     "\\src",
     "\\src\\lib",
-    "\\src\\locale",
+    "\\src\\lib\\grid",
     "\\src\\routes",
     "\\src\\routes\\auth",
-    "\\src\\routes\\project"
+    "\\src\\routes\\project",
+    "\\src\\styles"
   ],
-  "SelectedNode": "\\src\\routes\\index.svelte",
+  "SelectedNode": "\\src\\routes\\auth\\login.svelte",
   "PreviewInSolutionExplorer": false
 }
